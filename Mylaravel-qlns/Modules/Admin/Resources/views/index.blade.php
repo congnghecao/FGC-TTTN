@@ -1,0 +1,72 @@
+@extends('admin::layouts.master')
+
+@section('content')
+    <!---->
+    <!--Main main-->
+    <main class="app-content">
+        <div class="app-title">
+            <div>
+                <h1><i class="fa fa-dashboard"></i> Trang chủ</h1>
+
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+                    <div class="info">
+                        <h4>Người dùng</h4>
+                        <p><b>5</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
+                    <div class="info">
+                        <h4>Thích</h4>
+                        <p><b>25</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
+                    <div class="info">
+                        <h4>Cập nhật</h4>
+                        <p><b>10</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+                    <div class="info">
+                        <h4>Fan</h4>
+                        <p><b>500</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="tile">
+                    <h3 class="tile-title">Đánh giá</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="tile">
+                    <h3 class="tile-title">Quản lý</h3>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!---->
+    <!---->
+@stop
