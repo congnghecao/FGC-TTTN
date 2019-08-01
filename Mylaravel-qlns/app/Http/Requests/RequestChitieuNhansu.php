@@ -19,8 +19,8 @@ class RequestChitieuNhansu extends FormRequest
             'idnhansu',
             'diemchitieu'=>'required',
             'diemdatduoc',
-            'thang'=>'required',
-            'nam'=>'required',
+            'thang',
+            'nam',
             'ketqua',
             'khenthuong',
             'canhbao'
@@ -30,9 +30,7 @@ class RequestChitieuNhansu extends FormRequest
     {
         return [
 
-            'diemchitieu.required' =>'Không được để trống',
-            'thang.required' =>'Không được để trống',
-            'nam.required' =>'Không được để trống'
+            'diemchitieu.required' =>'Không được để trống'
         ];
     }
 }

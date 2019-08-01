@@ -85,30 +85,22 @@ Route::prefix('admin')->group(function() {
 
 
     Route::group(['prefix' => 'chitieu'],function (){
+
         Route::get('/','AdminChitieuController@index')->name('admin.get.list.chitieu');
+
         Route::post('/','AdminChitieuController@PostCreate')->name('admin.get.create.chitieu');
 
-//        Route::get('/create','AdminChitieuController@getCreate')->name('admin.get.create.chitieu');
-//        Route::post('/create','AdminChitieuController@PostCreate');
-
-//        Route::get('/update/{id}','AdminChitieuController@getUpdate')->name('admin.get.update.chitieu');
         Route::post('/update','AdminChitieuController@postUpdate')->name('admin.get.update.chitieu');
-
-//        Route::get('/delete/{id}','AdminChitieuController@delete')->name('admin.get.delete.chitieu');
 
         Route::get('/danhsachChitieu','AdminChitieuController@danhsachchitieu')->name('admin.get.danhsachchitieu.chitieu');
 
         Route::get('/danhsachChitieuPhong/{id}','AdminChitieuController@danhsachchitieuphong')->name('admin.get.danhsachchitieuphong.chitieu');
 
-//        Route::post('/danhsachChitieuPhong/{id}','AdminChitieuController@postDanhSachChitieuPhong')->name('admin.post.danhsachchitieuphong.chitieu');
-
         Route::get('/chitieuNhansuIndex','AdminChitieuController@chitieuNhansuIndex')->name('admin.get.danhsachchitieunhansu.chitieu');
 
-        Route::get('/chitieuNhansuCreate','AdminChitieuController@getChitieuNhansuCreate')->name('admin.get.danhsachchitieunhansuCreate.chitieu');
-        Route::post('/chitieuNhansuCreate','AdminChitieuController@postChitieuNhansuCreate');
+        Route::post('/chitieuNhansuIndex','AdminChitieuController@postChitieuNhansuIndex')->name('admin.post.danhsachchitieunhansu.chitieu');
 
-//        Route::get('/chitieuNhansuUpdate/{id}','AdminChitieuController@getChitieuNhansuUpdate')->name('admin.get.danhsachchitieunhansuUpdate.chitieu');
-//        Route::post('/chitieuNhansuUpdate/{id}','AdminChitieuController@postChitieuNhansuUpdate');
+        Route::post('/chitieuNhansuCreate','AdminChitieuController@postChitieuNhansuCreate')->name('admin.post.danhsachchitieunhansuCreate.chitieu');
 
         Route::post('/chitieuNhansuUpdate','AdminChitieuController@postChitieuNhansuUpdate')->name('admin.get.danhsachchitieunhansuUpdate.chitieu');
 
@@ -116,10 +108,11 @@ Route::prefix('admin')->group(function() {
 
     });
 
-
     Route::group(['prefix' => 'nhatkynghi'],function (){
         Route::get('/index','AdminNhatkynghiController@index')->name('admin.get.list.nhatkynghi');
         Route::post('/index','AdminNhatkynghiController@postindex');
+
+        Route::get('/thang','AdminNhatkynghiController@getIndexThang')->name('admin.get.listthang.nhatkynghi');
 
 
     });
