@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="ThemeAdmin/css/main.css">
+    <link rel="stylesheet" type="text/css" href="ThemeAdmin/css/style.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -118,6 +119,7 @@
 <script src="ThemeAdmin/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script type="text/javascript" src="ThemeAdmin/js/plugins/chart.js"></script>
+<script src="ThemeAdmin/js/myjs.js"></script>
 <script type="text/javascript">
     var data = {
         labels: ["January", "February", "March", "April", "May"],

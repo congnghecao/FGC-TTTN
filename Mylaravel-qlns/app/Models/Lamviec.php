@@ -8,5 +8,5 @@ class Lamviec extends Model
 {
     protected $table ="lamviec";
     protected  $guarded =[''];
-
+    public $timestamps = false;
 }

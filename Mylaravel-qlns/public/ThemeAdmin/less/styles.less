@@ -1,0 +1,67 @@
+.navbar .dropdown:hover > .dropdown-menu {
+  opacity: 1;
+  z-index: 99;
+  transition: all 1s;
+  display: block;
+}
+
+.navbar .dropdown-menu {
+  opacity: 0;
+  z-index: -1;
+  transition: all 1s;
+  left: auto;
+  right: -40px;
+}
+
+.data-modal {
+  width: 100%;
+  margin: auto;
+  .modal {
+    display: none; /* mặc định được ẩn đi */
+    position: fixed; /* vị trí cố định */
+    z-index: 99; /* Ưu tiên hiển thị trên cùng */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      .form-group {
+        margin-bottom: 5px;
+        .control-label {
+          margin: 0;
+          font-weight: 600;
+        }
+      }
+    }
+    .close-sua, .close-them {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close-sua:hover, .close-them:hover, .close-sua:focus, .close-them:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.erro {
+  color: red;
+  font-size: 12px;
+}
+.color-white{
+  color: white;
+}
+
+
