@@ -90,7 +90,7 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Nhật ký nghỉ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="{{route('admin.get.list.nhatkynghi')}}"><i class="icon fa fa-circle-o"></i>Liệt kê theo năm</a></li>
-                <li><a class="treeview-item" href=""><i class="icon fa fa-circle-o"></i>Liệt kê theo tháng</a></li>
+                <li><a class="treeview-item" href="{{route('admin.get.listthang.nhatkynghi')}}"><i class="icon fa fa-circle-o"></i>Liệt kê theo tháng</a></li>
 
             </ul>
         </li>
