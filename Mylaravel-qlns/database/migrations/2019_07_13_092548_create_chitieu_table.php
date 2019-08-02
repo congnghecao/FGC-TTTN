@@ -16,8 +16,8 @@ class CreateChitieuTable extends Migration
         Schema::create('chitieu', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-//            $table->unsignedBigInteger('id_phong_ban');
-//            $table->foreign('id_phong_ban')->references('id')->on('phongban');
+            $table->unsignedBigInteger('id_phong_ban');
+            $table->foreign('id_phong_ban')->references('id')->on('phongban');
             $table->string('ten_chi_tieu');
             $table->string('mo_ta')->nullable();
             $table->timestamps();

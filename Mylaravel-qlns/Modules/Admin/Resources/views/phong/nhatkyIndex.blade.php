@@ -33,7 +33,7 @@
                                     <form action="{{route('admin.post.nhatkyIndex.phong')}}" method="post">
                                         @csrf
                                         <div id="sampleTable_filter" class="dataTables_filter">
-                                            <label>Tìm kiếm:
+                                            <label>
                                                 <div class="row">
                                                     <div class="col-md-9">
                                                         <select  name="name" type="text" class="form-control form-control-sm"  aria-controls="sampleTable" style="margin-top: 5px;margin-right: 10px;">

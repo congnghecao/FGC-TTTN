@@ -23,11 +23,11 @@ class CreateChitietchitieuTable extends Migration
             $table->unsignedBigInteger('id_nhan_su');
             $table->foreign('id_nhan_su')->references('id')->on('nhansu');
             $table->integer('diem_chi_tieu');
-            $table->integer('diem_dat_duoc');
+            $table->integer('diem_dat_duoc')->nullable();
             $table->integer('thang');
             $table->integer('nam');
-            $table->string('ket_qua');
-            $table->string('khen_thuong');
+            $table->string('ket_qua')->nullable();
+            $table->string('khen_thuong')->nullable();
             $table->string('canh_bao')->nullable();
             $table->timestamps();
         });

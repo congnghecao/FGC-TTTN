@@ -30,7 +30,7 @@
                                 <span style="color: red;font-size: 40px;">|</span>Điền thông tin Nhật ký:</h3>
                     <p><b>Mã phòng ban:</b></p>
                     <input class="form-control" id="readOnlyInput" type="text"  readonly="" value="{{old('idphongban',$lamviec->id_phong_ban)}}"
-                           name="idphongban">
+                           name="idphongban" style="width: 30%;">
                             {{--<select class="form-control" id="exampleSelect1" name="idphongban">--}}
                                     {{--<option value="{{old('idphongban',$lamviec->id_phong_ban)}}">{{$phongban->tenphong}}</option>--}}
                             {{--</select>--}}
@@ -38,13 +38,13 @@
 
                     <p><b>Mã nhân sự:</b></p>
                     <input class="form-control" id="readOnlyInput" type="text" readonly="" value="{{old('idnhansu',$lamviec->id_nhan_su)}}"
-                           name="idnhansu">
+                           name="idnhansu" style="width: 40%;">
 
                     <br>
 
                     <p><b>Mã vị trí:</b></p>
                     <input class="form-control" id="readOnlyInput" type="text" readonly="" value="{{old('idvitri',$lamviec->id_vi_tri)}}"
-                           name="idvitri">
+                           name="idvitri" style="width: 30%;">
 
                     <br>
                         </div>
@@ -58,7 +58,7 @@
 
                     <p><b>Ngày kết thúc:</b></p>
                     <input class="form-control is-valid" id="inputValid" type="date" value="{{old('ngayketthuc',$lamviec->ngay_ket_thuc)}}"
-                           name="ngayketthuc">
+                           name="ngayketthuc" style="width: 50%;">
                     @if($errors->has('ngayketthuc'))
                         <span style="font-size: 12px;color: red">
                             <i>{{$errors->first('ngayketthuc')}}</i>
@@ -66,8 +66,9 @@
                     @endif
                     <br>
                     <p><b>Ghi chú:</b></p>
-                    <input class="form-control is-valid" id="inputValid" type="text" value="{{old('ghichu',$lamviec->ghi_chu)}}"
-                           name="ghichu">
+                            <textarea name="ghichu" id="inputValid" cols="20" rows="3" class="form-control">{{old('ghichu',$lamviec->ghi_chu)}}</textarea>
+                    {{--<input class="form-control is-valid" id="inputValid" type="text" value="{{old('ghichu',$lamviec->ghi_chu)}}"--}}
+                           {{--name="ghichu">--}}
                     @if($errors->has('ghichu'))
                         <span style="font-size: 12px;color: red">
                             <i>{{$errors->first('ghichu')}}</i>

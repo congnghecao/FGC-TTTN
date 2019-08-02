@@ -21,17 +21,30 @@
                                     <form action="{{route('admin.get.create.chitieu')}}" method="post">
                                         @csrf
                                         <p><b>Tên chỉ tiêu:</b></p>
-                                        <input class="form-control is-valid" id="inputValid" type="text" value="{{old('tenchitieu')}}" name="tenchitieu">
+                                        <input class="form-control is-valid" id="inputValid" type="text" value="{{old('tenchitieu')}}" name="tenchitieu" style="width: 60%">
                                         @if($errors->has('tenchitieu'))
                                             <span style="font-size: 12px;color: red"><i>{{$errors->first('tenchitieu')}}</i></span>
                                         @endif
                                         <br>
                                         <p><b>Mô tả:</b></p>
-                                        <input class="form-control is-valid" id="inputValid" type="text" value="{{old('mota')}}" name="mota">
+                                        <textarea class="form-control" id="exampleTextarea" rows="3" type="text"  name="mota">{{old('mota')}}</textarea>
+                                        {{--<input class="form-control is-valid" id="inputValid" type="text" value="{{old('mota')}}" name="mota">--}}
+
                                         @if($errors->has('mota'))
                                             <span style="font-size: 12px;color: red"><i>{{$errors->first('mota')}}</i></span>
                                         @endif
                                         <br>
+                                        <p><b>Phòng ban:</b></p>
+                                        <input style="margin-left: 40px; margin-top: 10px;" type="checkbox" id="select_all"/> Chọn tất cả<br>
+                                        <div class="row">
+                                            @foreach($phong as $p)
+                                                <div class="col-md-6">
+                                                    <input class="checkbox" style="margin-left: 40px; margin-top: 10px;" type="checkbox" name="check[]" value="{{$p->id}}"> {{$p->ten_phong}}
+                                                </div>
+
+
+                                            @endforeach
+                                        </div>
                                         <center>
                                             <button class="btn btn-primary" type="submit">Thêm</button>
                                         </center>
@@ -83,6 +96,10 @@
                                                 colspan="" aria-label=""
                                                 style="width: 30%;">Tên chỉ tiêu
                                             </th>
+                                            {{--<th class="sorting" tabindex="" aria-controls="" rowspan=""--}}
+                                                {{--colspan="" aria-label=""--}}
+                                                {{--style="width: 30%;">Mã phòng ban--}}
+                                            {{--</th>--}}
                                             <th class="sorting" tabindex="" aria-controls="" rowspan=""
                                                 colspan="" aria-label=""
                                                 style="width: 40%;">Mô tả
@@ -100,6 +117,7 @@
                                                 <td class="sorting_1">{{$ct->id}}</td>
                                                 {{--<td>{{$ct->id_phong_ban}}</td>--}}
                                                 <td>{{$ct->ten_chi_tieu}}</td>
+                                                {{--<td>{{$ct->id_phong_ban}}</td>--}}
                                                 <td>{{$ct->mo_ta}}</td>
                                                 <td>
                                                     <button  data-catid="{{$ct->id}}" data-mytitle="{{$ct->ten_chi_tieu}}" data-mydescriptiton="{{$ct->mo_ta}}" class="btn btn-primary" style="color: white;font-size: 10px;border: 20px;" type="button" data-toggle="modal" data-target="#update">Cập nhật</button>
@@ -137,7 +155,8 @@
                                                 <input class="form-control is-valid" id="title" type="text" value="" name="ten">
                                                 <br>
                                                 <p><b>Mô tả:</b></p>
-                                                <input class="form-control is-valid" id="des" type="text" value="" name="mo">
+                                                <textarea class="form-control" id="des" rows="3" type="text"  name="mo"></textarea>
+                                                {{--<input class="form-control is-valid" id="des" type="text" value="" name="mo">--}}
                                                 <br>
                                                 <center>
                                                     <button class="btn btn-primary" type="submit">Cập nhật</button>

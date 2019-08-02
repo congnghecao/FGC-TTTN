@@ -11,7 +11,6 @@ class RequestChitieuNhansu extends FormRequest
         return true;
     }
 
-
     public function rules()
     {
         return [
@@ -20,10 +19,7 @@ class RequestChitieuNhansu extends FormRequest
             'diemchitieu'=>'required',
             'diemdatduoc',
             'thang',
-            'nam',
-            'ketqua',
-            'khenthuong',
-            'canhbao'
+            'nam'
         ];
     }
     public function messages()

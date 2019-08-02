@@ -83,7 +83,8 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="{{route('admin.get.list.chitieu')}}"><i class="icon fa fa-circle-o"></i>Quản lý Chỉ tiêu</a></li>
                 <li><a class="treeview-item" href="{{route('admin.get.danhsachchitieu.chitieu')}}"><i class="icon fa fa-circle-o"></i>Danh sách Chỉ tiêu</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.danhsachchitieunhansu.chitieu')}}"><i class="icon fa fa-circle-o"></i>Chỉ tiêu theo nhân sự</a></li>
+                <li><a class="treeview-item" href="{{route('admin.get.IndexNhansu.chitieu')}}"><i class="icon fa fa-circle-o"></i>Chi tiết chỉ tiêu nhân sự</a></li>
+
             </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">Nhật ký nghỉ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -215,7 +216,7 @@
 </script>
 
 <script type="text/javascript">
-    $('#chitieuNhansu').on('show.bs.modal',function (event) {
+    $('#updateChitieuNhansu').on('show.bs.modal',function (event) {
 
 
 

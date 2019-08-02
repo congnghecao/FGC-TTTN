@@ -15,33 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chitieuNhansuCreate.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuCreate.blade.php">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="84" column="79" selection-start-line="84" selection-start-column="79" selection-end-line="84" selection-end-column="79" />
-              <folding>
-                <element signature="e#3694#3713#0#HTML" expanded="true" />
-                <element signature="e#3814#3848#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestChitieuNhansu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestChitieuNhansu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestPhong.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestPhong.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+            <state relative-caret-position="319">
+              <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="101" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -49,13 +27,12 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Admin/Routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="476">
+              <caret line="100" column="74" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="74" />
               <folding>
                 <element signature="e#544#2156#1#PHP" />
                 <element signature="e#2200#3086#1#PHP" />
                 <element signature="e#3131#3778#1#PHP" />
-                <element signature="e#6103#6404#1#PHP" />
               </folding>
             </state>
           </provider>
@@ -64,8 +41,20 @@
       <file leaf-file-name="AdminChitieuController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminChitieuController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="182" column="5" selection-start-line="182" selection-start-column="5" selection-end-line="182" selection-end-column="5" />
+            <state relative-caret-position="578">
+              <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+              <folding>
+                <element signature="e#50#87#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestChitieu.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestChitieu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -88,12 +77,12 @@
       <find>delete</find>
       <find>.app-title p</find>
       <find>post-create-project-cmd</find>
+      <find>.table-hover tbody tr:hover</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansu.blade.php" />
         <option value="$PROJECT_DIR$/public/js/xuly.js" />
         <option value="$PROJECT_DIR$/public/ThemeAdmin/js/main.js" />
         <option value="$PROJECT_DIR$/public/ThemeAdmin/js/plugins/xuly.js" />
@@ -102,17 +91,13 @@
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/update.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/update.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/create.blade.php" />
-        <option value="$PROJECT_DIR$/public/ThemeAdmin/css/main.css" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/index.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/nhansu/index.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/nhansu/them.blade.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyUpdate.blade.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyCreate.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/RequestPhongNhatKy.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/selectns.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/RequestPhong.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminPhongController.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyIndex.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/nhansu/sua.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/nhansu/danh-sach.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Lamviec.php" />
@@ -124,10 +109,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_07_13_092309_create_lamviec_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_13_085032_create_nhansu_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_13_092523_create_xinnghi_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/RequestChitieu.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_07_13_092548_create_chitieu_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_07_13_092614_create_chitietchitieu_table.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/index.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuUpdate.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/danhsachPhongIndex.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/nhatkynghi/nhatkyNghiIndex.blade.php" />
@@ -135,15 +116,24 @@
         <option value="$PROJECT_DIR$/.env.example" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminNhatkynghiController.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/nhatkynghi/nhatkyNghiThangIndex.blade.php" />
         <option value="$PROJECT_DIR$/public/ThemeAdmin/js/xuly.js" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuIndex.blade.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Routes/web.php" />
-        <option value="$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminChitieuController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/RequestChitieuNhansu.php" />
         <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuCreate.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyIndex.blade.php" />
+        <option value="$PROJECT_DIR$/public/ThemeAdmin/css/main.css" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/RequestChitieuNhansu.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/layouts/master.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyCreate.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyUpdate.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansu.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Routes/web.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuIndex.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_13_092614_create_chitietchitieu_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_13_092548_create_chitieu_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/RequestChitieu.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminChitieuController.php" />
+        <option value="$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/index.blade.php" />
       </list>
     </option>
   </component>
@@ -289,6 +279,11 @@
             <path>
               <item name="Mylaravel-qlns" type="b2602c69:ProjectViewProjectNode" />
               <item name="Mylaravel-qlns" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mylaravel-qlns" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mylaravel-qlns" type="462c0819:PsiDirectoryNode" />
               <item name="Modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -296,21 +291,6 @@
               <item name="Mylaravel-qlns" type="462c0819:PsiDirectoryNode" />
               <item name="Modules" type="462c0819:PsiDirectoryNode" />
               <item name="Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mylaravel-qlns" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mylaravel-qlns" type="462c0819:PsiDirectoryNode" />
-              <item name="Modules" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mylaravel-qlns" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mylaravel-qlns" type="462c0819:PsiDirectoryNode" />
-              <item name="Modules" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mylaravel-qlns" type="b2602c69:ProjectViewProjectNode" />
@@ -359,7 +339,7 @@
               <item name="Mylaravel-qlns" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="ThemeAdmin" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -428,16 +408,20 @@
       <workItem from="1564364698024" duration="4801000" />
       <workItem from="1564449469578" duration="8872000" />
       <workItem from="1564529256709" duration="9953000" />
+      <workItem from="1564627068309" duration="1629000" />
+      <workItem from="1564657613669" duration="20090000" />
+      <workItem from="1564710396545" duration="9044000" />
+      <workItem from="1564723366055" duration="1078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171056000" />
+    <option name="totallyTimeSpent" value="202897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20244215" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16645244" />
       <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
@@ -465,54 +449,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuUpdate.blade.php" />
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyIndex.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="20" column="17" lean-forward="true" selection-start-line="20" selection-start-column="17" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/danhsachPhongIndex.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="84" column="65" lean-forward="true" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/web.config">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/composer.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/module.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/autoload.php" />
-    <entry file="file://$PROJECT_DIR$/composer.lock">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -538,13 +474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -683,67 +612,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminPhongController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestPhong.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="49" column="8" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="60" selection-end-column="20" />
+        <state relative-caret-position="442">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuIndex.blade.php">
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuCreate.blade.php" />
+    <entry file="file://$PROJECT_DIR$/public/ThemeAdmin/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="883">
-          <caret line="258" column="106" selection-start-line="258" selection-start-column="106" selection-end-line="258" selection-end-column="106" />
-          <folding>
-            <element signature="e#16284#16328#0#HTML" expanded="true" />
-            <element signature="e#16622#16666#0#HTML" expanded="true" />
-            <element signature="e#17006#17031#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="212">
+          <caret line="1728" column="29" lean-forward="true" selection-start-line="1728" selection-start-column="29" selection-end-line="1728" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Routes/web.php">
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansu.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/danhsachIndex.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="e#544#2156#1#PHP" />
-            <element signature="e#2200#3086#1#PHP" />
-            <element signature="e#3131#3778#1#PHP" />
-            <element signature="e#6103#6404#1#PHP" />
-          </folding>
-        </state>
+        <state relative-caret-position="-208" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminChitieuController.php">
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="182" column="5" selection-start-line="182" selection-start-column="5" selection-end-line="182" selection-end-column="5" />
+        <state relative-caret-position="390">
+          <caret line="220" selection-start-line="220" selection-end-line="220" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestChitieuNhansu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="357">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestPhong.php">
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyCreate.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        <state relative-caret-position="1258">
+          <caret line="74" column="136" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="136" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuCreate.blade.php">
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyUpdate.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="84" column="79" selection-start-line="84" selection-start-column="79" selection-end-line="84" selection-end-column="79" />
+        <state relative-caret-position="289">
+          <caret line="32" column="60" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/phong/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="162" column="44" selection-start-line="162" selection-start-column="44" selection-end-line="162" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/phong/nhatkyIndex.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminPhongController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="141" column="32" lean-forward="true" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansu.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="45" column="71" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/chitieuNhansuIndex.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="38" column="78" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_13_092614_create_chitietchitieu_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_13_092548_create_chitieu_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="100" column="74" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="74" />
           <folding>
-            <element signature="e#3694#3713#0#HTML" expanded="true" />
-            <element signature="e#3814#3848#0#HTML" expanded="true" />
+            <element signature="e#544#2156#1#PHP" />
+            <element signature="e#2200#3086#1#PHP" />
+            <element signature="e#3131#3778#1#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/RequestChitieu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Http/Controllers/AdminChitieuController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+          <folding>
+            <element signature="e#50#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Resources/views/chitieu/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="101" selection-end-column="53" />
         </state>
       </provider>
     </entry>

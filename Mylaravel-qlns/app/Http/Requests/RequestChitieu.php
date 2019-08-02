@@ -19,7 +19,8 @@ class RequestChitieu extends FormRequest
 
 
             'tenchitieu'=>'required',
-            'mota' => 'required'
+            'mota' => 'required',
+            'check'
         ];
 
     }

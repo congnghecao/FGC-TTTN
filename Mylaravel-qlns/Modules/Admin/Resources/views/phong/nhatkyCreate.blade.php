@@ -28,21 +28,21 @@
                             <h3 style="text-shadow: 1px 1px 1px #2a383e;margin-top: 30px;margin-bottom: 45px;font-size: 30px;font-weight: 100;">
                                 <span style="color: red;font-size: 40px;">|</span>Điền thông tin Nhật ký:</h3>
                             <p><b>Tên phòng ban:</b></p>
-                            <select class="form-control" id="exampleSelect1" name="idphongban">
+                            <select class="form-control" id="exampleSelect1" name="idphongban" style="width: 50%">
                                 @foreach($phongban as $pb)
                                     <option value="{{$pb->id}}">{{$pb->ten_phong}}</option>
                                 @endforeach
                             </select>
                             <br>
                             <p><b>Họ tên nhân sự:</b></p>
-                            <select class="form-control" id="exampleSelect1" name="idnhansu">
+                            <select class="form-control" id="exampleSelect1" name="idnhansu" style="width: 55%">
                                 @foreach($nhansu as $ns)
                                     <option value="{{$ns->id}}">{{$ns->ho_ten}}</option>
                                 @endforeach
                             </select>
                             <br>
                             <p><b>Tên vị trí:</b></p>
-                            <select class="form-control" id="exampleSelect1" name="idvitri">
+                            <select class="form-control" id="exampleSelect1" name="idvitri" style="width: 30%">
                                 @foreach($vitri as $vt)
                                     <option value="{{$vt->id}}">{{$vt->ten_vi_tri}}</option>
                                 @endforeach
@@ -64,7 +64,7 @@
                             <p><b>Ngày kết thúc:</b></p>
                             <input class="form-control is-valid" id="inputValid" type="date"
                                    value="{{old('ngayketthuc')}}"
-                                   name="ngayketthuc">
+                                   name="ngayketthuc" style="width: 50%">
                             {{--@if($errors->has('ngayketthuc'))--}}
                                 {{--<span style="font-size: 12px;color: red">--}}
                             {{--<i>{{$errors->first('ngayketthuc')}}</i>--}}
@@ -72,8 +72,9 @@
                             {{--@endif--}}
                             <br>
                             <p><b>Ghi chú:</b></p>
-                            <input class="form-control is-valid" id="inputValid" type="text" value="{{old('ghichu')}}"
-                                   name="ghichu">
+                            <textarea name="ghichu" id="inputValid" cols="20" rows="3" class="form-control">{{old('ghichu')}}</textarea>
+                            {{--<input class="form-control is-valid" id="inputValid" type="text" value="{{old('ghichu')}}"--}}
+                                   {{--name="ghichu">--}}
                             @if($errors->has('ghichu'))
                                 <span style="font-size: 12px;color: red">
                             <i>{{$errors->first('ghichu')}}</i>
