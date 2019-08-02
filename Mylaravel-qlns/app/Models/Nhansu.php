@@ -8,4 +8,5 @@ class Nhansu extends Model
 {
     protected $table ="nhansu";
     protected  $guarded =[''];
+    public $timestamps = false;
 }
