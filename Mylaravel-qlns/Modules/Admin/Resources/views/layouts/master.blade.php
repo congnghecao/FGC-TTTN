@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="ThemeAdmin/css/main.css">
+    <link rel="stylesheet" type="text/css" href="ThemeAdmin/css/animate.css">
     <link rel="stylesheet" type="text/css" href="ThemeAdmin/css/style.css">
+
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -112,6 +114,10 @@
 <!-- Essential javascripts for application to work-->
 <script src="ThemeAdmin/js/jquery-3.2.1.min.js"></script>
 <script src="ThemeAdmin/js/xuly.js"></script>
+<script src="ThemeAdmin/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
 <script src="ThemeAdmin/js/popper.min.js"></script>
 <script src="ThemeAdmin/js/bootstrap.min.js"></script>
 <script src="ThemeAdmin/js/main.js"></script>
@@ -254,5 +260,13 @@
         modal.find('.modal-body #canh_bao').val(m);
     })
 </script>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 </body>
+
 </html>

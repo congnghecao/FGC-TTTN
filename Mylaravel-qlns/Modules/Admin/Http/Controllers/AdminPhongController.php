@@ -88,9 +88,10 @@ class AdminPhongController extends Controller
 
     public function store(RequestPhong $requestPhong)
     {
-
+        $a =1;
         $this->insertOrUpdate($requestPhong);
-        return redirect()->back();
+        return redirect()->back()->with('statusadd', 'Thêm Phòng ban Thành công !');
+
     }
 
     public function update(Request $request)
@@ -100,7 +101,7 @@ class AdminPhongController extends Controller
         $phong->mo_ta = $request->mo;
         $phong->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('statusupdate', 'Cập nhật thành công!');
     }
 
     public function insertOrUpdate($requestPhong, $id = '')
@@ -129,7 +130,7 @@ class AdminPhongController extends Controller
         $phongban->delete();
 
 
-        return redirect()->back();
+        return redirect()->back()->with('statusdelete', 'Xóa thành công!');
     }
 
     public function nhatkyIndex()
