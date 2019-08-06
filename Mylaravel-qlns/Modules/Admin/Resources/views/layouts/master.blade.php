@@ -187,10 +187,6 @@
 
 <script type="text/javascript">
     $('#edit').on('show.bs.modal',function (event) {
-
-
-
-
         var button = $(event.relatedTarget)
         var title = button.data('mytitle')
         var descriptiton = button.data('mydescriptiton')
@@ -205,33 +201,21 @@
 
 <script type="text/javascript">
     $('#update').on('show.bs.modal',function (event) {
-
-
-
-
         var button = $(event.relatedTarget)
         var title = button.data('mytitle')
         var descriptiton = button.data('mydescriptiton')
         var cat_id = button.data('catid')
 
-
         var modal = $(this)
         modal.find('.modal-body #title').val(title);
         modal.find('.modal-body #des').val(descriptiton);
         modal.find('.modal-body #cat_id').val(cat_id);
-
     })
 </script>
-
 <script type="text/javascript">
     $('#updateChitieuNhansu').on('show.bs.modal',function (event) {
-
-
-
-
         var button = $(event.relatedTarget)
         var id= button.data('idid')
-
 
         var a = button.data('idchitieu')
         var b = button.data('idnhansu')
@@ -240,11 +224,7 @@
         var e = button.data('khenthuong')
         var f = button.data('thag')
         var g = button.data('namm')
-        // var h = button.data('kq')
         var m = button.data('canhbao')
-
-
-
 
         var modal = $(this)
         modal.find('.modal-body #id_id').val(id);
@@ -260,7 +240,28 @@
         modal.find('.modal-body #canh_bao').val(m);
     })
 </script>
+<script type="text/javascript">
+    $('#editNhatKyPhong').on('show.bs.modal',function (event) {
+        var button = $(event.relatedTarget)
+        var id= button.data('idlv')
 
+        var a = button.data('idpb')
+        var b = button.data('idns')
+        var c = button.data('idvt')
+        var d = button.data('datekt')
+        var e = button.data('mota')
+
+
+        var modal = $(this)
+        modal.find('.modal-body #id_id').val(id);
+
+        modal.find('.modal-body #idphongban').val(a);
+        modal.find('.modal-body #idnhansu').val(b);
+        modal.find('.modal-body #idvitri').val(c);
+        modal.find('.modal-body #ngayketthuc').val(d);
+        modal.find('.modal-body #ghichu').val(e);
+    })
+</script>
 <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();

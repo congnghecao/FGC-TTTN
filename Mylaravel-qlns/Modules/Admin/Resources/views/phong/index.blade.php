@@ -58,20 +58,20 @@
             <ul class="app-breadcrumb breadcrumb">
                 <div style="position: absolute;top: 70px;right: 180px;">
                     @if (session('statusadd'))
-                        <div class="chuthich right wow slideInRight" data-wow-duration="0.5s" style="width: 300px;display: block;">
+                        <div class="chuthich right wow slideInRight" data-wow-duration="1s" style="width: 300px;display: block;">
                             <div class="arroww" style="top: 50%;"></div>
                             <h3 class="chuthich-title" style="color:red;">Thông báo!</h3>
                             <div class="chuthich-content">{{ session('statusadd') }}</div>
                         </div>
                     @elseif (session('statusupdate'))
-                        <div class="chuthich right wow slideInRight" style="width: 300px;display: block;" data-wow-duration="0.5s">
+                        <div class="chuthich right wow slideInRight" style="width: 300px;display: block;" data-wow-duration="1s">
                             <div class="arroww" style="top: 50%;"></div>
                             <h3 class="chuthich-title" style="color:red;">Thông báo!</h3>
 
                             <div class="chuthich-content">{{ session('statusupdate') }}</div>
                         </div>
                     @elseif (session('statusdelete'))
-                        <div class="chuthich right wow slideInRight" data-wow-duration="0.5s" style="width: 300px;display: block;">
+                        <div class="chuthich right wow slideInRight" data-wow-duration="1s" style="width: 300px;display: block;">
                             <div class="arroww" style="top: 50%;"></div>
                             <h3 class="chuthich-title" style="color:red;">Thông báo!</h3>
 
