@@ -146,6 +146,7 @@ class AdminChitieuController extends Controller
             ->leftJoin('chitieu', 'chitieu.id', '=', 'chitietchitieu.id_chi_tieu')
             ->select('chitietchitieu.id', 'nhansu.id as idnhansu', 'chitieu.id as idchitieu', 'thang', 'ten_chi_tieu', 'diem_chi_tieu', 'diem_dat_duoc')
             ->where('nhansu.id', $id)
+
             ->get();
         return view('admin::chitieu.chitieuNhansu', compact('chitietchitieu', 'thang', 'nam', 'chitieu'));
     }
