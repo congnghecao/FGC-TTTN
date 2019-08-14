@@ -32,63 +32,46 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <h6 class="text-center mt-2">
-                <mark>----- Thời gian học việc -----</mark>
-            </h6>
-            <div class="row">
-                <div class="form-group col-md-6" style="padding-right: 1px">
-                    <label class="control-label">Ngày bắt đầu</label>
-                    <input class="form-control" type="date" name="ngayhvs" placeholder="22/07/1997"
-                           value="{{$nhansu->ngay_hoc_viec}}">
-                </div>
-                <div class="form-group col-md-6" style="padding-left: 1px">
-                    <label class="control-label">Ngày kết thúc</label>
-                    <input class="form-control" type="date" name="ngaykthvs"
-                           value="{{$nhansu->ngay_kt_hoc_viec}}" placeholder="22/07/1997">
-                </div>
-                <span class="col-md-12 erro erroNgaykthvs"></span>
+            <div class="form-group">
+                <label class="control-label">Ngày học việc</label>
+                <input class="form-control" type="date" name="ngayhvs" placeholder="22/07/1997"
+                       value="{{$nhansu->ngay_hoc_viec}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ngày kết thức học việc</label>
+                <input class="form-control" type="date" name="ngaykthvs"
+                       value="{{$nhansu->ngay_kt_hoc_viec}}" placeholder="22/07/1997">
             </div>
         </div>
         <div class="col-md-4">
-            <h6 class="text-center mt-2">
-                <mark>----- Thời gian thử việc -----</mark>
-            </h6>
-            <div class="row">
-                <div class="form-group col-md-6" style="padding-right: 1px">
-                    <label class="control-label">Ngày bắt đầu</label>
-                    <input class="form-control" type="date" name="ngaytvs"
-                           placeholder="22/07/1997" value="{{$nhansu->ngay_thu_viec}}">
-                </div>
-                <div class="form-group col-md-6" style="padding-left: 1px">
-                    <label class="control-label">Ngày kết thúc</label>
-                    <input class="form-control" type="date"
-                           name="ngaykttvs"
-                           placeholder="22/07/1997" value="{{$nhansu->ngay_kt_thu_viec}}">
-                </div>
-                <span class="col-md-12 erro erroNgaykttvs"></span>
+            <div class="form-group">
+                <label class="control-label">Ngày thử việc</label>
+                <input class="form-control" type="date" name="ngaytvs"
+                       placeholder="22/07/1997" value="{{$nhansu->ngay_thu_viec}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ngày kết thúc thử
+                    việc</label>
+                <input class="form-control" type="date"
+                       name="ngaykttvs"
+                       placeholder="22/07/1997" value="{{$nhansu->ngay_kt_thu_viec}}">
             </div>
         </div>
         <div class="col-md-4">
-            <h6 class="text-center mt-2">
-                <mark>----- Thời gian làm chính thức -----</mark>
-            </h6>
-            <div class="row">
-                <div class="form-group col-md-6" style="padding-right: 1px">
-                    <label class="control-label">Ngày bắt đầu</label>
-                    <input class="form-control" type="date" name="ngaylcts"
-                           placeholder="22/07/1997" value="{{$nhansu->ngay_lam_chinh_thuc}}">
-                </div>
-                <div class="form-group col-md-6" style="padding-left: 1px">
-                    <label class="control-label">Ngày kết thúc</label>
-                    <input class="form-control" type="date"
-                           name="ngaylkts" value="{{$nhansu->ngay_lam_ket_thuc}}"
-                           placeholder="22/07/1997">
-                </div>
-                <span class="col-md-12 erro erroNgaylkts"></span>
+            <div class="form-group">
+                <label class="control-label">Ngày làm chính thức</label>
+                <input class="form-control" type="date" name="ngaylcts"
+                       placeholder="22/07/1997" value="{{$nhansu->ngay_lam_chinh_thuc}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ngày làm kết thúc</label>
+                <input class="form-control" type="date"
+                       name="ngaylkts" value="{{$nhansu->ngay_lam_ket_thuc}}"
+                       placeholder="22/07/1997">
             </div>
         </div>
     </div>
-    <div class="row pt-0" style="border-top: 1px solid #ddd;padding: 20px 0 0 0;margin-top: 10px">
+    <div class="row tile-footer pt-0">
         <div class="col-md-6">
             <span class="erro">Chú ý: Trường * không được để trống !</span>
         </div>

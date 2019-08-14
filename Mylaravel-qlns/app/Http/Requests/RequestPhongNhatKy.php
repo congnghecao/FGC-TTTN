@@ -24,6 +24,7 @@ class RequestPhongNhatKy extends FormRequest
     public function rules()
     {
         return [
+            'lamviec_id',
             'idphongban',
             'idnhansu',
             'idvitri',

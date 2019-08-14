@@ -30,7 +30,6 @@
                                         <form id="search" action="admin/nhansu/lich-su-cong-tac" method="post">
                                             @csrf
                                             <input value="{{$id}}" type="search" class="form-control form-control-sm"
-                                                   title="Mời nhật ID nhân sự."
                                                    name="id" placeholder="ID" aria-controls="sampleTable">
                                             <button class="btn btn-sm btn-primary" type="submit">Tìm kiếm</button>
                                         </form>
@@ -146,34 +145,18 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($ns->ngayct !== null)
-                                                        @if($ns->ngayct < 365 && $ns->ngayct >= 30)
-                                                            {{FLOOR($ns->ngayct/30).' Tháng'}}
-                                                            @if($ns->ngayct%30 > 0)
-                                                                {{' '. ($ns->ngayct%30).' Ngày'}}
-                                                            @endif
-                                                        @elseif($ns->ngayct >= 365)
-                                                            {{FLOOR($ns->ngayct/365).' Năm'}}
-                                                            @if($ns->ngayct%365 >= 30)
-                                                                {{' '. FLOOR(($ns->ngayct%365)/30).' Tháng'}}
-                                                            @endif
-                                                        @endif
-                                                    @else
-                                                        @if($ns->ngayht < 365 && $ns->ngayht >= 30)
-                                                            {{FLOOR($ns->ngayht/30).' Tháng'}}
-                                                            @if($ns->ngayct%30 > 0)
-                                                                {{' '. ($ns->ngayct%30).' Ngày'}}
-                                                            @endif
-                                                        @elseif($ns->ngayht >= 365)
-                                                            {{FLOOR($ns->ngayht/365).' Năm'}}
-                                                            @if($ns->ngayht%365 >= 30)
-                                                                {{' '. FLOOR(($ns->ngayht%365)/30).' Tháng'}}
-                                                            @endif
-                                                        @endif
+                                                    @if ($ns->thang !== 0 && $ns->thang != '')
+                                                        {{$ns->thang.' Tháng'}}
+                                                    @elseif($ns->nam !== 0 && $ns->nam != '')
+                                                        {{$ns->nam.' Năm'}}
+                                                    @elseif(date("Y")-date("Y",strtotime($ns->ngay_lam)) > 0)
+                                                        {{date("Y")-date("Y",strtotime($ns->ngay_lam)).' Năm '}}
+                                                    @elseif(date("m")-date("m",strtotime($ns->ngay_lam))>0)
+                                                        {{date("m")-date("m",strtotime($ns->ngay_lam)).' Tháng'}}
                                                     @endif
                                                 </td>
                                                 <td class="text-center">
-                                                    <a class="btn btn-suaCV badge badge-warning" style="margin-right: -3px"
+                                                    <a class="btn btn-suaCV badge badge-warning"
                                                        id="{{$ns->id}}">Sửa</a>
                                                     <a href="admin/nhansu/xoa-chuc-vu/{{$ns->id}}/{{$id}}"
                                                        class="btn badge badge-danger">Xóa</a>

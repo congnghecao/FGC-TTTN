@@ -161,8 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Tightenco\Ziggy\ZiggyServiceProvider::class,
-        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -228,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class
     ],
 
 ];

@@ -37,8 +37,8 @@
 			}
 		}
 
-        var width = this.width = computeDimension(context.canvas, 'Width');
-        var height = this.height = computeDimension(context.canvas, 'Height');
+		var width = this.width = computeDimension(context.canvas,'Width');
+		var height = this.height = computeDimension(context.canvas,'Height');
 
 		// Firefox requires this to work correctly
 		context.canvas.width  = width;

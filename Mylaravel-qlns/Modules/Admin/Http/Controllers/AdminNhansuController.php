@@ -20,7 +20,7 @@ class AdminNhansuController extends Controller
     public function getDanhSach()
     {
         $nhansu = DB::table('nhansu')
-            ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
+            ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,YEAR(STR_TO_DATE(nhansu.ngay_lam_chinh_thuc,\'%Y-%m-%d\'))-YEAR(STR_TO_DATE(nhansu.ngay_vao,\'%Y-%m-%d\')) as nam,MONTH(STR_TO_DATE(nhansu.ngay_lam_ket_thuc,\'%Y-%m-%d\'))-MONTH(STR_TO_DATE(nhansu.ngay_vao,\'%Y-%m-%d\')) as thang,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
             ->paginate(10);
         $lamviec = DB::table('nhansu')
             ->select(DB::raw('nhansu.id,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc'))
@@ -34,15 +34,11 @@ class AdminNhansuController extends Controller
         return view('admin::nhansu.danh-sach', ['nhansu' => $nhansu, 'lamviec' => $lamviec, 'phongban' => $phongban, 'vitri' => $vitri]);
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function postDanhSach(Request $request)
     {
         $id = $request->id;
         $nhansu = DB::table('nhansu')
-            ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
+            ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,YEAR(STR_TO_DATE(nhansu.ngay_lam_chinh_thuc,\'%Y-%m-%d\'))-YEAR(STR_TO_DATE(nhansu.ngay_vao,\'%Y-%m-%d\')) as nam,MONTH(STR_TO_DATE(nhansu.ngay_lam_ket_thuc,\'%Y-%m-%d\'))-MONTH(STR_TO_DATE(nhansu.ngay_vao,\'%Y-%m-%d\')) as thang,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
             ->where('nhansu.id', 'like', $id . '%')
             ->paginate(10);
         $lamviec = DB::table('nhansu')
@@ -166,7 +162,7 @@ class AdminNhansuController extends Controller
     {
         $stt = 1;
         $nhansu = DB::table('nhansu')
-            ->select(DB::raw('lamviec.id,nhansu.ho_ten,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc,DATEDIFF(lamviec.ngay_ket_thuc,lamviec.ngay_lam) as ngayct,DATEDIFF(now(),lamviec.ngay_lam) as ngayht'))
+            ->select(DB::raw('lamviec.id,nhansu.ho_ten,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc,YEAR(STR_TO_DATE(lamviec.ngay_ket_thuc,\'%Y-%m-%d\'))-YEAR(STR_TO_DATE(lamviec.ngay_lam,\'%Y-%m-%d\')) as nam,MONTH(STR_TO_DATE(lamviec.ngay_ket_thuc,\'%Y-%m-%d\'))-MONTH(STR_TO_DATE(lamviec.ngay_lam,\'%Y-%m-%d\')) as thang'))
             ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
             ->join('phongban', 'lamviec.id_phong_ban', '=', 'phongban.id')
             ->join('vitri', 'lamviec.id_vi_tri', '=', 'vitri.id')
