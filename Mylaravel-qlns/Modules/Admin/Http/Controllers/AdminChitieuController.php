@@ -139,7 +139,11 @@ class AdminChitieuController extends Controller
 
     public function getIndexNhansuChitieu($id, $thang, $nam)
     {
-        $chitieu = Chitieu::all();
+
+        $nhansu = DB::table('nhansu')
+            ->select('ho_ten')
+            ->where('id',$id)
+            ->get();
 
         $chitietchitieu = DB::table('nhansu')
             ->leftJoin('chitietchitieu', 'chitietchitieu.id_nhan_su', '=', 'nhansu.id')
@@ -148,20 +152,47 @@ class AdminChitieuController extends Controller
             ->where('nhansu.id', $id)
 
             ->get();
-        return view('admin::chitieu.chitieuNhansu', compact('chitietchitieu', 'thang', 'nam', 'chitieu'));
+        return view('admin::chitieu.chitieuNhansu', compact('chitietchitieu', 'thang', 'nam', 'chitieu','id','nhansu'));
     }
 
-    public function postCreateNhansuChitieu(RequestChitieuNhansu $requestChitieuNhansu)
-    {
-        $chitietchitieu = new Chitietchitieu();
-        $chitietchitieu->id_chi_tieu = $requestChitieuNhansu->idchitieu;
-        $chitietchitieu->id_nhan_su = $requestChitieuNhansu->idnhansu;
-        $chitietchitieu->diem_chi_tieu = $requestChitieuNhansu->diemchitieu;
-        $chitietchitieu->thang = $requestChitieuNhansu->thang;
-        $chitietchitieu->nam = $requestChitieuNhansu->nam;
-        $chitietchitieu->save();
-        return redirect()->back();
+
+    public function getAddNhansuChitieu($id, $thang, $nam){
+
+        $chitieu = Chitieu::all();
+        $nhansu = DB::table('nhansu')
+            ->select('ho_ten')
+            ->where('id',$id)
+            ->get();
+        return view('admin::chitieu.chitieuNhansuAdd',compact('chitieu','id','thang','nam','nhansu'));
     }
+
+
+    public function postAddNhansuChitieu(Request $request){
+        if(count($request->product_name) > 0 ){
+            foreach ($request->product_name as $item=>$v){
+                $data = array(
+                    'id_chi_tieu'=>$request->product_name[$item],
+                    'id_nhan_su'=>$request->idns[$item],
+                    'diem_chi_tieu'=>$request->quantity[$item],
+                    'thang'=>$request->thang[$item],
+                    'nam'=>$request->nam[$item]
+                );
+                Chitietchitieu::insert($data);
+            }
+        }
+        return redirect()->back()->with('statusadd', 'Thêm mới thành công!');
+    }
+//    public function postCreateNhansuChitieu(RequestChitieuNhansu $requestChitieuNhansu)
+//    {
+//        $chitietchitieu = new Chitietchitieu();
+//        $chitietchitieu->id_chi_tieu = $requestChitieuNhansu->idchitieu;
+//        $chitietchitieu->id_nhan_su = $requestChitieuNhansu->idnhansu;
+//        $chitietchitieu->diem_chi_tieu = $requestChitieuNhansu->diemchitieu;
+//        $chitietchitieu->thang = $requestChitieuNhansu->thang;
+//        $chitietchitieu->nam = $requestChitieuNhansu->nam;
+//        $chitietchitieu->save();
+//        return redirect()->back();
+//    }
 
     public function postUpdateNhansuChitieu(Request $request)
     {
@@ -176,13 +207,13 @@ class AdminChitieuController extends Controller
         $chitietchitieu->khen_thuong = $request->khenthuong;
         $chitietchitieu->canh_bao = $request->canhbao;
         $chitietchitieu->save();
-        return redirect()->back();
+        return redirect()->back()->with('statusupdate', 'Cập nhật thành công!');
     }
 
     public function getDeleteNhansuChitieu($id)
     {
         $chitietchitieu = Chitietchitieu::find($id);
         $chitietchitieu->delete();
-        return redirect()->back();
+        return redirect()->back()->with('statusdelete', 'Xóa thành công!');
     }
 }

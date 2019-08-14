@@ -90,7 +90,9 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/indexNhansuChitieu/id/{idnhansu}/thang/{thang}/nam/{nam}', 'AdminChitieuController@getIndexNhansuChitieu')->name('admin.get.IndexNhansuChitieu.chitieu');
 
-        Route::post('/createNhansuChitieu', 'AdminChitieuController@postCreateNhansuChitieu')->name('admin.post.CreateNhansuChitieu.chitieu');
+        Route::get('/addNhansuChitieu/id/{idnhansu}/thang/{thang}/nam/{nam}', 'AdminChitieuController@getAddNhansuChitieu')->name('admin.get.AddNhansuChitieu.chitieu');
+        Route::post('/addNhansuChitieu', 'AdminChitieuController@postAddNhansuChitieu')->name('admin.post.AddNhansuChitieu.chitieu');
+//        Route::post('/createNhansuChitieu', 'AdminChitieuController@postCreateNhansuChitieu')->name('admin.post.CreateNhansuChitieu.chitieu');
 
         Route::post('/updateNhansuChitieu', 'AdminChitieuController@postUpdateNhansuChitieu')->name('admin.post.UpdateNhansuChitieu.chitieu');
 
