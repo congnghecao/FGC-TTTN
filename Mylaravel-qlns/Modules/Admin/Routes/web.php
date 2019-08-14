@@ -31,8 +31,8 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['prefix' => 'nhansu'], function () {
         //thêm sửa xóa danh sách nhân sự
-        Route::get('danh-sach', 'AdminNhansuController@getDanhSach')->name('admin.get.index.nhansu');
-        Route::post('danh-sach', 'AdminNhansuController@postDanhSach');
+        Route::get('danh-sach/{page}', 'AdminNhansuController@getDanhSach')->name('admin.get.index.nhansu');
+        Route::post('danh-sach/{page}', 'AdminNhansuController@postDanhSach');
 
         Route::post('them', 'AdminNhansuController@postThem');
 
@@ -41,26 +41,25 @@ Route::prefix('admin')->group(function () {
 
         Route::get('xoa/{id}', 'AdminNhansuController@getXoa')->name('admin.get.xoa.nhansu');
         //Lịch sử công tác
-        Route::get('lich-su-cong-tac/{id}', 'AdminNhansuController@getLichSu')->name('admin.get.lichsucongtac.nhansu');
-        Route::post('lich-su-cong-tac', 'AdminNhansuController@postLichSu');
+        Route::get('lich-su-cong-tac/{id}/{page}', 'AdminNhansuController@getLichSu')->name('admin.get.lichsucongtac.nhansu');
+        Route::post('lich-su-cong-tac/{page}', 'AdminNhansuController@postLichSu');
 
         Route::get('them-chuc-vu/{id}/{phongban}/{vitri}', 'AdminNhansuController@getThemCV');
         Route::get('sua-chuc-vu/{id}', 'AdminNhansuController@getSuaCV');
         Route::get('ssua-chuc-vu/{id}/{nhansu}/{phongban}/{vitri}/{ngaykt}', 'AdminNhansuController@postSuaCV');
-        Route::get('xoa-chuc-vu/{id}/{nhansu}', 'AdminNhansuController@getXoaCV');
+        Route::get('xoa-chuc-vu/{id}', 'AdminNhansuController@getXoaCV');
 
         Route::get('chi-tiet/{id}', 'AdminNhansuController@getChiTiet');
 
     });
     Route::group(['prefix' => 'xinnghi'], function () {
         //xin nghỉ
-        Route::get('index/{id}', 'AdminNhansuController@getXinNghi')->name('admin.get.index.xinnghi');
-        Route::post('index', 'AdminNhansuController@postXinNghi');
+        Route::get('index/{id}/{page}', 'AdminNhansuController@getXinNghi')->name('admin.get.index.xinnghi');
+        Route::post('index/{page}', 'AdminNhansuController@postXinNghi');
 
-        Route::get('them', 'AdminNhansuController@getThemXN')->name('admin.get.them.xinnghi');
         Route::post('them', 'AdminNhansuController@postThemXN');
 
-        Route::get('phe-duyet/{id}/{nhansu}', 'AdminNhansuController@getPheDuyet');
+        Route::get('phe-duyet/{id}/{nhansu}/{page}', 'AdminNhansuController@getPheDuyet');
 
         Route::get('sua/{id}', 'AdminNhansuController@getSuaXN');
         Route::post('sua/{id}', 'AdminNhansuController@postSuaXN');

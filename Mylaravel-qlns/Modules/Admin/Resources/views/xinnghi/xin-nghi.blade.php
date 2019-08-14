@@ -14,7 +14,7 @@
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.trangchu')}}"><i class="fa fa-home fa-lg"></i></a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{route('admin.get.index.nhansu')}}">Nhân sự</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.get.index.nhansu','10')}}">Nhân sự</a></li>
                 <li class="breadcrumb-item"><a href="">Xin nghỉ</a></li>
 
             </ul>
@@ -26,9 +26,9 @@
                         <div id="sampleTable_wrapper"
                              class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                             <div class="row">
-                                <div class="col-sm-12 col-md-11">
+                                <div class="col-sm-9 col-md-9 col-lg-9 col-9">
                                     <div id="sampleTable_filter" class="dataTables_filter text-left">
-                                        <form id="search" action="admin/xinnghi/index" method="post">
+                                        <form id="search" action="admin/xinnghi/index/{{$page}}" method="post">
                                             @csrf
                                             <input value="{{$id}}" type="search"
                                                    class="form-control form-control-sm m-0" name="id"
@@ -38,9 +38,11 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-1 pl-md-0 data-modal">
-                                    <a class="btn btn-sm btn-info text-center btn-them mb-2" style="color: white">
-                                        Thêm mới</a>
+                                <div class="col-sm-3 col-md-3 col-3 col-lg-3 data-modal">
+                                    <div class="dataTables_filter">
+                                        <a class="btn btn-sm btn-info btn-them" style="color: white">Thêm
+                                            mới</a>
+                                    </div>
                                     <!-- The Modal -->
                                     <div id="themModal" class="modal">
                                         <!-- Nội dung modal -->
@@ -129,109 +131,146 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @if(session('thongbao'))
-                            <div class="alert alert-success text-center">
-                                {{session('thongbao')}}
-                            </div>
-                        @endif
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable"
-                                       role="grid" aria-describedby="sampleTable_info">
-                                    <thead>
-                                    <tr role="row" class="text-center" style="background-color: #009688;color: white">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-sort="ascending"
-                                            aria-label="Name: activate to sort column descending"
-                                            style="width:10px;">STT
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 150px;">Họ tên
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 80px;">Số buổi nghỉ
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Age: activate to sort column ascending"
-                                            style="width: 100px;">Thời gian nghỉ
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Age: activate to sort column ascending"
-                                            style="width: 110px;">Lý do
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 90px;">Chuyển tới ai
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 60px;">Loại nghỉ
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                            colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 60px;">Phê duyệt
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($nhansu as $ns)
-                                        <tr>
-                                            <td class="text-center">{{$stt++}}</td>
-                                            <td>{{$ns->ho_ten}}</td>
-                                            <td class="text-center">{{$ns->so_buoi_nghi}}</td>
-                                            <td>{{'Từ '.$ns->ngay_bat_dau.' đến '.$ns->ngay_ket_thuc}}</td>
-                                            <td>{{$ns->ly_do}}</td>
-                                            <td>{{$ns->chuyen_toi_ai}}</td>
-                                            <td>{{$ns->loai_nghi}}</td>
-                                            <td class="text-center">
-                                                @if(($ns->phe_duyet) === 0)
-                                                    <a href="admin/xinnghi/phe-duyet/{{$ns->id}}/{{$ns->id_nhan_su}}"
-                                                       class="btn badge badge-success">Phê duyệt</a><br>
-                                                @endif
-                                                <nav class="navbar navbar-expand-lg navbar-light pl-0 pr-0">
-                                                    <div class="collapse navbar-collapse"
-                                                         id="navbarSupportedContent">
-                                                        <ul class="navbar-nav ml-auto mr-auto">
-                                                            <li class="nav-item active">
-                                                                <a class="btn btn-suaXN badge badge-warning"
-                                                                   value="{{$ns->id}}">Sửa</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a href="admin/xinnghi/xoa/{{$ns->id}}/{{$ns->id_nhan_su}}"
-                                                                   class="btn badge badge-danger">Xóa</a>
-                                                            </li>
-                                                            <li class="nav-item dropdown">
+                            @if(session('thongbao'))
+                                <div class="alert alert-success text-center">
+                                    {{session('thongbao')}}
+                                </div>
+                            @endif
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable"
+                                           role="grid" aria-describedby="sampleTable_info">
+                                        <thead>
+                                        <tr role="row" class="text-center"
+                                            style="background-color: #009688;color: white">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Name: activate to sort column descending"
+                                                style="width:10px;">STT
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 150px;">Họ tên
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Office: activate to sort column ascending"
+                                                style="width: 80px;">Số buổi nghỉ
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Age: activate to sort column ascending"
+                                                style="width: 100px;">Thời gian nghỉ
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Age: activate to sort column ascending"
+                                                style="width: 110px;">Lý do
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Salary: activate to sort column ascending"
+                                                style="width: 90px;">Chuyển tới ai
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Salary: activate to sort column ascending"
+                                                style="width: 60px;">Loại nghỉ
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
+                                                colspan="1" aria-label="Salary: activate to sort column ascending"
+                                                style="width: 60px;">Phê duyệt
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($nhansu as $ns)
+                                            <tr>
+                                                <td class="text-center">{{$stt++}}</td>
+                                                <td>{{$ns->ho_ten}}</td>
+                                                <td class="text-center">{{$ns->so_buoi_nghi}}</td>
+                                                <td>{{'Từ '.$ns->ngay_bat_dau.' đến '.$ns->ngay_ket_thuc}}</td>
+                                                <td>{{$ns->ly_do}}</td>
+                                                <td>{{$ns->chuyen_toi_ai}}</td>
+                                                <td>{{$ns->loai_nghi}}</td>
+                                                <td class="text-center">
+                                                    <nav class="navbar navbar-expand-lg navbar-light pl-0 pr-0">
+                                                        <div class="collapse navbar-collapse"
+                                                             id="navbarSupportedContent">
+                                                            <ul class="navbar-nav ml-auto mr-auto">
+                                                                <li class="nav-item active" title="Sửa">
+                                                                    <a class="btn btn-suaXN badge badge-warning"
+                                                                       value="{{$ns->id}}">Sửa</a>
+                                                                </li>
+                                                                <li class="nav-item" title="Xóa">
+                                                                    <a href="admin/xinnghi/xoa/{{$ns->id}}/{{$ns->id_nhan_su}}"
+                                                                       class="btn badge badge-danger">Xóa</a>
+                                                                </li>
+                                                                @if(($ns->phe_duyet) === 0)
+                                                                    <li class="nav-item" title="Phê duyệt">
+                                                                        <a href="admin/xinnghi/phe-duyet/{{$ns->id}}/{{$ns->id_nhan_su}}/{{$page}}"
+                                                                           class="btn badge badge-success">
+                                                                            <i style="font-size: 9px"
+                                                                               class="fa fa-check"></i>
+                                                                        </a><br>
+                                                                    </li>
+                                                                @endif
+                                                                <li class="nav-item dropdown" title="Chi tiết">
                                                                 <span class="btn badge badge-pill badge-dark chi-tiet"
                                                                       data-toggle="dropdown"
                                                                       aria-haspopup="true" value="{{$ns->id_nhan_su}}"
                                                                       aria-expanded="false">!</span>
-                                                                {{--dropdown-menu--}}
-                                                                <div class="dropdown-menus data-chitiet{{$ns->id_nhan_su}}"
-                                                                     aria-labelledby="dropdown">
-                                                                    {{--ajax data--}}
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </nav>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                                                    {{--dropdown-menu--}}
+                                                                    <div class="dropdown-menus data-chitiet{{$ns->id_nhan_su}}"
+                                                                         aria-labelledby="dropdown">
+                                                                        {{--ajax data--}}
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </nav>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12">
-                                <div class="dataTables_paginate paging_simple_numbers" id="sampleTable_paginate">
-                                    <ul class="pagination">
-                                        <li class=" ml-auto paginate_button page-item previous active">
-                                            {{$nhansu->links()}}
-                                        </li>
-                                    </ul>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+                                    <div id="sampleTable_filter" class="dataTables_filter text-left">
+                                        <div class="dataTables_length text-left">
+                                            <label>Hiển thị: <select name="pageXinNghi" id="{{$id}}" aria-controls="sampleTable"
+                                                                     class="form-control form-control-sm">
+                                                    @if($page == 10)
+                                                        <option selected value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    @elseif($page == 25)
+                                                        <option value="10">10</option>
+                                                        <option selected value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    @elseif($page == 50)
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option selected value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    @elseif($page == 100)
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option selected value="100">100</option>
+                                                    @endif
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="sampleTable_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item previous active">
+                                                {{$nhansu->links()}}
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

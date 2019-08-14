@@ -22,9 +22,9 @@
                         <div id="sampleTable_wrapper"
                              class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                             <div class="row">
-                                <div class="col-sm-12 col-md-11">
-                                    <div id="sampleTable_filter" class="dataTables_filter text-left">
-                                        <form action="admin/nhansu/danh-sach" method="post">
+                                <div class="col-sm-9 col-md-9 col-lg-9 col-9">
+                                    <div class="dataTables_filter text-left">
+                                        <form action="admin/nhansu/danh-sach/{{$page}}" method="post">
                                             @csrf
                                             <input type="search" class="form-control form-control-sm m-0"
                                                    title="Mời nhật ID nhân sự."
@@ -33,10 +33,12 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-1 pl-md-0 data-modal">
+                                <div class="col-sm-3 col-md-3 col-3 col-lg-3 data-modal">
                                     {{--admin/nhansu/them--}}
-                                    <a class="btn btn-sm btn-info text-center btn-them mb-2" style="color: white">Thêm
-                                        mới</a>
+                                    <div class="dataTables_filter">
+                                        <a class="btn btn-sm btn-info btn-them" style="color: white">Thêm
+                                            mới</a>
+                                    </div>
                                     <!-- The Modal -->
                                     <div id="themModal" class="modal">
                                         <!-- Nội dung modal -->
@@ -228,40 +230,35 @@
                                             style="background-color: #009688;color: white">
                                             <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
-                                                aria-label="Name: activate to sort column descending"
-                                                style="width: 20px;">ID
+                                                aria-label="Name: activate to sort column descending">ID
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 110px;">Họ tên
+                                                colspan="1" aria-label="Position: activate to sort column ascending">
+                                                Họ tên
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 70px;">Ngày sinh
+                                                colspan="1" aria-label="Office: activate to sort column ascending">
+                                                Ngày sinh
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Age: activate to sort column ascending"
-                                                style="width: 70px;">Nơi thường trú
+                                                colspan="1" aria-label="Start date: activate to sort column ascending">
+                                                CMND
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Start date: activate to sort column ascending"
-                                                style="width: 50px;">CMND
+                                                colspan="1" aria-label="Salary: activate to sort column ascending">
+                                                Ngày vào làm
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Salary: activate to sort column ascending"
-                                                style="width: 70px;">Ngày vào làm
+                                                colspan="1" aria-label="Salary: activate to sort column ascending">
+                                                Thời gian làm việc
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Salary: activate to sort column ascending"
-                                                style="width: 60px;">Thời gian làm việc
+                                                colspan="1" aria-label="Salary: activate to sort column ascending">
+                                                Chức vụ
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Salary: activate to sort column ascending"
-                                                style="width: 110px;">Chức vụ
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
-                                                colspan="1" aria-label="Salary: activate to sort column ascending"
-                                                style="width: 70px;">Thực hiện
+                                                colspan="1" aria-label="Salary: activate to sort column ascending">
+                                                Thực hiện
                                             </th>
                                         </tr>
                                         </thead>
@@ -270,12 +267,12 @@
                                             <tr class="abc">
                                                 <td class="text-center">{{$ns->id}}</td>
                                                 <td>{{$ns->ho_ten}}</td>
-                                                <td>{{$ns->ngay_sinh}}</td>
-                                                <td>{{$ns->noi_thuong_tru}}</td>
+                                                <td class="text-center">{{$ns->ngay_sinh}}</td>
+                                                {{--<td>{{$ns->noi_thuong_tru}}</td>--}}
 
-                                                <td>{{$ns->cmnd}}</td>
-                                                <td>{{$ns->ngay_vao}}</td>
-                                                <td>
+                                                <td class="text-center">{{$ns->cmnd}}</td>
+                                                <td class="text-center">{{$ns->ngay_vao}}</td>
+                                                <td class="text-center">
                                                     @if($ns->ngayct !== null)
                                                         @if($ns->ngayct < 365 && $ns->ngayct >= 30)
                                                             {{FLOOR($ns->ngayct/30).' Tháng'}}
@@ -343,7 +340,34 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-12">
+                                    <div class="dataTables_length text-left">
+                                        <label>Hiển thị: <select name="pageNhanSu" aria-controls="sampleTable"
+                                                                 class="form-control form-control-sm">
+                                                @if($page == 10)
+                                                    <option selected value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                @elseif($page == 25)
+                                                    <option value="10">10</option>
+                                                    <option selected value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                @elseif($page == 50)
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option selected value="50">50</option>
+                                                    <option value="100">100</option>
+                                                @elseif($page == 100)
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option selected value="100">100</option>
+                                                @endif
+                                            </select></label></div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-12">
                                     <div class="dataTables_paginate paging_simple_numbers" id="sampleTable_paginate">
                                         <ul class="pagination">
                                             <li class="paginate_button page-item previous active">

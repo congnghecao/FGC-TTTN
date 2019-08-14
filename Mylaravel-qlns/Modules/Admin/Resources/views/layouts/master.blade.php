@@ -100,11 +100,11 @@
                         class="app-menu__label">Nhân Sự</span><i
                         class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
-                <li><a class="treeview-item" href="{{route('admin.get.index.nhansu')}}"><i
+                <li><a class="treeview-item" href="{{route('admin.get.index.nhansu','10')}}"><i
                                 class="icon fa fa-circle-o"></i>Quản lý Nhân sự</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.lichsucongtac.nhansu','1')}}"><i
+                <li><a class="treeview-item" href="{{route('admin.get.lichsucongtac.nhansu',['id'=>1,'page'=>10])}}"><i
                                 class="icon fa fa-circle-o"></i>Lịch sử công tác</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.index.xinnghi','1')}}"><i
+                <li><a class="treeview-item" href="{{route('admin.get.index.xinnghi',['id'=>1,'page'=>10])}}"><i
                                 class="icon fa fa-circle-o"></i>Xin nghỉ</a></li>
             </ul>
         </li>

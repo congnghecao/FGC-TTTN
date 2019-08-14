@@ -17,11 +17,11 @@ class AdminNhansuController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getDanhSach()
+    public function getDanhSach($page)
     {
         $nhansu = DB::table('nhansu')
             ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
-            ->paginate(10);
+            ->paginate($page);
         $lamviec = DB::table('nhansu')
             ->select(DB::raw('nhansu.id,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc'))
             ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
@@ -31,20 +31,20 @@ class AdminNhansuController extends Controller
             ->get();
         $phongban = DB::table('phongban')->select('id', 'ten_phong')->get();
         $vitri = DB::table('vitri')->select('id', 'ten_vi_tri')->get();
-        return view('admin::nhansu.danh-sach', ['nhansu' => $nhansu, 'lamviec' => $lamviec, 'phongban' => $phongban, 'vitri' => $vitri]);
+        return view('admin::nhansu.danh-sach', ['nhansu' => $nhansu, 'lamviec' => $lamviec, 'phongban' => $phongban, 'vitri' => $vitri, 'page' => $page]);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function postDanhSach(Request $request)
+    public function postDanhSach(Request $request, $page)
     {
         $id = $request->id;
         $nhansu = DB::table('nhansu')
             ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
             ->where('nhansu.id', 'like', $id . '%')
-            ->paginate(10);
+            ->paginate($page);
         $lamviec = DB::table('nhansu')
             ->select(DB::raw('nhansu.id,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc'))
             ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
@@ -55,7 +55,7 @@ class AdminNhansuController extends Controller
             ->get();
         $phongban = DB::table('phongban')->select('id', 'ten_phong')->get();
         $vitri = DB::table('vitri')->select('id', 'ten_vi_tri')->get();
-        return view('admin::nhansu.danh-sach', ['nhansu' => $nhansu, 'lamviec' => $lamviec, 'phongban' => $phongban, 'vitri' => $vitri]);
+        return view('admin::nhansu.danh-sach.' . $page, ['nhansu' => $nhansu, 'lamviec' => $lamviec, 'phongban' => $phongban, 'vitri' => $vitri]);
     }
 
     /**
@@ -110,7 +110,7 @@ class AdminNhansuController extends Controller
             $lamviec->save();
         }
 
-        return redirect('admin/nhansu/danh-sach')->with('thongbao', 'Đã thêm mới thành công');
+        return redirect('admin/nhansu/danh-sach/10')->with('thongbao', 'Đã thêm mới thành công');
     }
 
     /**
@@ -144,7 +144,7 @@ class AdminNhansuController extends Controller
         $nhansu->ngay_lam_ket_thuc = $request->ngaylkts;
 
         $nhansu->save();
-        return redirect('admin/nhansu/danh-sach')->with('thongbao', 'Đã sửa thành công');
+        return redirect('admin/nhansu/danh-sach/10')->with('thongbao', 'Đã sửa thành công');
     }
 
     /**
@@ -162,7 +162,7 @@ class AdminNhansuController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getLichSu($id)
+    public function getLichSu($id, $page)
     {
         $stt = 1;
         $nhansu = DB::table('nhansu')
@@ -171,20 +171,20 @@ class AdminNhansuController extends Controller
             ->join('phongban', 'lamviec.id_phong_ban', '=', 'phongban.id')
             ->join('vitri', 'lamviec.id_vi_tri', '=', 'vitri.id')
             ->where('nhansu.id', '=', $id)
-            ->paginate(10);
+            ->paginate($page);
         $phongban = phongban::all();
         $vitri = vitri::all();
-        return view('admin::nhansu.lich-su-cong-tac', ['nhansu' => $nhansu, 'phongban' => $phongban, 'vitri' => $vitri, 'id' => $id, 'stt' => $stt]);
+        return view('admin::nhansu.lich-su-cong-tac', ['page' => $page, 'nhansu' => $nhansu, 'phongban' => $phongban, 'vitri' => $vitri, 'id' => $id, 'stt' => $stt]);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function postLichSu(Request $request)
+    public function postLichSu(Request $request, $page)
     {
         $id = $request->id;
-        return redirect('admin/nhansu/lich-su-cong-tac/' . $id);
+        return redirect('admin/nhansu/lich-su-cong-tac/' . $id . '/' . $page);
     }
 
     /**
@@ -255,18 +255,18 @@ class AdminNhansuController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function getXoaCV($id, $nhansu)
+    public function getXoaCV($id)
     {
         $chucvu = Lamviec::find($id);
         $chucvu->delete();
-        return redirect('admin/nhansu/lich-su-cong-tac/' . $nhansu)->with('thongbao', 'Đã xóa thành công!');
+        return redirect()->back()->with('thongbao', 'Đã xóa thành công');
     }
 
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getXinNghi($id)
+    public function getXinNghi($id, $page)
     {
         $stt = 1;
         $nhansu = DB::table('nhansu')
@@ -274,35 +274,23 @@ class AdminNhansuController extends Controller
             ->join('xinnghi', 'xinnghi.id_nhan_su', 'nhansu.id')
             ->where('nhansu.id', '=', $id)
             ->orderByDesc('xinnghi.id')
-            ->paginate(10);
+            ->paginate($page);
 
         $vitri = DB::table('vitri')
             ->select('ten_vi_tri')
             ->where('ten_vi_tri', '!=', 'Nhân viên')
             ->get();
-        return view('admin::xinnghi.xin-nghi', ['nhansu' => $nhansu, 'vitri' => $vitri, 'stt' => $stt, 'id' => $id]);
+        return view('admin::xinnghi.xin-nghi', ['page' => $page, 'nhansu' => $nhansu, 'vitri' => $vitri, 'stt' => $stt, 'id' => $id]);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function postXinNghi(Request $request)
+    public function postXinNghi(Request $request, $page)
     {
         $id = $request->id;
-        return redirect('admin/xinnghi/index/' . $id);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getThemXN()
-    {
-        $vitri = DB::table('vitri')
-            ->select('ten_vi_tri')
-            ->where('ten_vi_tri', '!=', 'Nhân viên')
-            ->get();
-        return view('admin::xinnghi.them', ['vitri' => $vitri]);
+        return redirect('admin/xinnghi/index/' . $id . '/' . $page);
     }
 
     /**
@@ -323,21 +311,21 @@ class AdminNhansuController extends Controller
         $xinnghi->phe_duyet = $request->tt;
 
         $xinnghi->save();
-        return redirect('admin/xinnghi/index/' . $request->id_nhan_su)->with('thongbao', 'Đã thêm thành công!');
+        return redirect('admin/xinnghi/index/' . $request->id_nhan_su . '/10')->with('thongbao', 'Đã thêm thành công!');
     }
 
     /**
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function getPheDuyet($id, $nhansu)
+    public function getPheDuyet($id, $nhansu, $page)
     {
         $xinnghi = Xinnghi::find($id);
 
         $xinnghi->phe_duyet = 1;
 
         $xinnghi->save();
-        return redirect('admin/xinnghi/index/' . $nhansu)->with('thongbao', 'Đã phê duyệt thành công!');
+        return redirect('admin/xinnghi/index/' . $nhansu . '/' . $page)->with('thongbao', 'Đã phê duyệt thành công!');
     }
 
     /**
@@ -374,7 +362,7 @@ class AdminNhansuController extends Controller
         $xinnghi->phe_duyet = $request->tts;
 
         $xinnghi->save();
-        return redirect('admin/xinnghi/index/' . $request->id_nhan_sus)->with('thongbao', 'Đã sửa thành công!');
+        return redirect('admin/xinnghi/index/' . $request->id_nhan_sus . '/10')->with('thongbao', 'Đã sửa thành công!');
     }
 
     /**

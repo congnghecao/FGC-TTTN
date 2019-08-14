@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //Thống kê
+    //------------------------Thống kê------------------------
     //submit form theo năm của nhân sự
     $("select[name='nam1']").change(function () {
         $("form[name='nam1']").submit();
@@ -14,11 +14,23 @@ $(document).ready(function () {
     $("select[name='chitieu']").change(function () {
         $("form[name='chitieu']").submit();
     });
-    //kiểm tra null input tìm kiếm
+    //------------------------Hiển thị số lượng bản ghi------------------------
+    $("select[name='pageNhanSu']").change(function () {
+        window.location = 'admin/nhansu/danh-sach/' + $(this).val();
+    });
+    $("select[name='pageLichSu']").change(function () {
+        const id = $(this).attr('id');
+        window.location = 'admin/nhansu/lich-su-cong-tac/' + id + '/' + $(this).val();
+    });
+    $("select[name='pageXinNghi']").change(function () {
+        const id = $(this).attr('id');
+        window.location = 'admin/xinnghi/index/' + id + '/' + $(this).val();
+    });
+    //------------------------tìm kiếm------------------------
     $("#search").submit(function () {
         return ktrNull("input[name='id']", ".erroSearch", "Mời nhập ID nhân sự.");
     });
-    //xin nghỉ
+    //------------------------xin nghỉ------------------------
     //thêm xin nghỉ
     $("#themXN").submit(function () {
         return ktrNull("input[name='id_nhan_su']", ".erroIDn", "Mời nhập mã nhân sự.") === true
@@ -44,7 +56,8 @@ $(document).ready(function () {
         });
     });
     dataModal("#suaModal", ".btn-suaXN", ".close-sua", "suaModal");
-    //Chức vụ
+    //------------------------Lịch sử công tác------------------------
+    //Thêm chức vụ
     $("#themChucvu").click(function () {
         ktrChucVu();
     });
@@ -78,6 +91,7 @@ $(document).ready(function () {
             })
         });
     });
+    //------------------------nhân sự------------------------
     //chi tiet nhan su
     $(".chi-tiet").hover(function () {
         const id = $(this).attr("value");

@@ -1,6 +1,9 @@
 <h6 class="dropdown-header text-center"
     style="color: black;font-weight: bold">{{$nhansu->id."_".$nhansu->ho_ten}}</h6>
 <hr width="50%" color="black" class="mt-1 mb-0">
+<p class="text-center small text-gray-500 m-0 pb-0">
+    <b class="">Nơi thường trú:</b> {{$nhansu->noi_thuong_tru}}
+</p>
 <p class="dropdown-item d-flex align-items-center small text-gray-500 m-0 pb-0">
     @if($nhansu->ngay_hoc_viec !== null)
         <b>{{'- Thời gian học việc: '}}</b>
