@@ -33,7 +33,7 @@
                                             <input value="{{$id}}" type="search"
                                                    class="form-control form-control-sm m-0" name="id"
                                                    placeholder="Nhập ID" aria-controls="sampleTable"
-                                                   title="ID không được để trống!">
+                                                   title="Mời nhật ID nhân sự.">
                                             <button class="btn btn-sm btn-primary" type="submit">Tìm kiếm</button>
                                         </form>
                                     </div>
@@ -148,31 +148,31 @@
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 100px;">Họ tên
+                                            style="width: 150px;">Họ tên
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 40px;">Số buổi nghỉ
+                                            style="width: 80px;">Số buổi nghỉ
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Age: activate to sort column ascending"
-                                            style="width: 60px;">Thời gian nghỉ
+                                            style="width: 100px;">Thời gian nghỉ
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Age: activate to sort column ascending"
-                                            style="width: 100px;">Lý do
+                                            style="width: 110px;">Lý do
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 70px;">Chuyển tới ai
+                                            style="width: 90px;">Chuyển tới ai
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 50px;">Loại nghỉ
+                                            style="width: 60px;">Loại nghỉ
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1"
                                             colspan="1" aria-label="Salary: activate to sort column ascending"
-                                            style="width: 50px;">Phê duyệt
+                                            style="width: 60px;">Phê duyệt
                                         </th>
                                     </tr>
                                     </thead>
@@ -191,7 +191,7 @@
                                                     <a href="admin/xinnghi/phe-duyet/{{$ns->id}}/{{$ns->id_nhan_su}}"
                                                        class="btn badge badge-success">Phê duyệt</a><br>
                                                 @endif
-                                                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                                                <nav class="navbar navbar-expand-lg navbar-light pl-0 pr-0">
                                                     <div class="collapse navbar-collapse"
                                                          id="navbarSupportedContent">
                                                         <ul class="navbar-nav ml-auto mr-auto">
@@ -199,17 +199,17 @@
                                                                 <a class="btn btn-suaXN badge badge-warning"
                                                                    value="{{$ns->id}}">Sửa</a>
                                                             </li>
-                                                            <li class="nav-item mr-1 ml-1">
+                                                            <li class="nav-item">
                                                                 <a href="admin/xinnghi/xoa/{{$ns->id}}/{{$ns->id_nhan_su}}"
                                                                    class="btn badge badge-danger">Xóa</a>
                                                             </li>
                                                             <li class="nav-item dropdown">
                                                                 <span class="btn badge badge-pill badge-dark chi-tiet"
-                                                                      id="dropdown" data-toggle="dropdown"
+                                                                      data-toggle="dropdown"
                                                                       aria-haspopup="true" value="{{$ns->id_nhan_su}}"
                                                                       aria-expanded="false">!</span>
                                                                 {{--dropdown-menu--}}
-                                                                <div class="dropdown-menu data-chitiet{{$ns->id_nhan_su}}"
+                                                                <div class="dropdown-menus data-chitiet{{$ns->id_nhan_su}}"
                                                                      aria-labelledby="dropdown">
                                                                     {{--ajax data--}}
                                                                 </div>

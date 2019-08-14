@@ -2,9 +2,13 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Charts\nhanSuChart;
+use App\Models\Nhansu;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
 
 class AdminController extends Controller
 {
@@ -12,9 +16,19 @@ class AdminController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
+//    public function index()
+//    {
+//        return view('admin::index');
+//    }
     public function index()
     {
-        return view('admin::index');
+        $nhansu = DB::table('nhansu')->select('id')->get();
+//        return view('admin::index', ['nhansu' => $nhansu->toJson()]);
+        $arr = '';
+        foreach ($nhansu as $ns)
+            $arr .= "\"".$ns->id."\",";
+        $str =  substr($arr,0,strlen($arr)-1);
+        return view('admin::index', ['str' => $str]);
     }
 
     /**

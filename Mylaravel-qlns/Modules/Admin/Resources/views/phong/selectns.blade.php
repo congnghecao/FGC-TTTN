@@ -38,7 +38,7 @@
                                                         <div class="col-sm-12">
 
                                                             <br>
-                                                            <h2>Có {{$p->sons}} nhân sự đang làm việc</h2>
+                                                            <h2>Có {{$p->sons}} nhân sự làm việc</h2>
                                                         </div>
                                                     </div>
                                                 </div>

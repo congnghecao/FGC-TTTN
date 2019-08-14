@@ -8,4 +8,5 @@ class Chitieu extends Model
 {
     protected $table ="chitieu";
     protected  $guarded =[''];
+    public $timestamps = false;
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chitietchitieu extends Model
 {
-    protected $table ="chitietchitieu";
-    protected  $guarded =[''];
+    protected $table = "chitietchitieu";
+    protected $guarded = [''];
+    public $timestamps = false;
 }
