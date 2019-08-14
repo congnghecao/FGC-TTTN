@@ -30,21 +30,4 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $("#select_all_update").change(function () {  //"select all" change
-        $(".checkboxupdate").prop('checked', $(this).prop("checked")); //change all ".checkbox" checked status
-    });
-
-//".checkbox" change
-    $('.checkboxupdate').change(function () {
-        //uncheck "select all", if one of the listed checkbox item is unchecked
-        if (false == $(this).prop("checked")) { //if this item is unchecked
-            $("#select_all_update").prop('checked', false); //change "select all" checked status to false
-        }
-        //check "select all" if all checkbox items are checked
-        if ($('.checkboxupdate:checked').length == $('.checkbox').length) {
-            $("#select_all_update").prop('checked', true);
-        }
-    });
-});
 //select all checkboxes

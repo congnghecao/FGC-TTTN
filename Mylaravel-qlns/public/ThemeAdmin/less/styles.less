@@ -1,16 +1,24 @@
-.navbar .dropdown:hover > .dropdown-menu {
+.navbar .dropdown:hover > .dropdown-menus {
   opacity: 1;
   z-index: 99;
-  transition: all 1s;
+  transition: all 0.5s;
   display: block;
 }
 
-.navbar .dropdown-menu {
+.navbar .dropdown-menus {
+  position: absolute;
   opacity: 0;
   z-index: -1;
   transition: all 1s;
   left: auto;
-  right: -40px;
+  right: 95px;
+  top: -20px;
+  background-color: #FFF;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .data-modal {
@@ -60,8 +68,19 @@
   color: red;
   font-size: 12px;
 }
-.color-white{
+
+.color-white {
   color: white;
 }
 
+mark {
+  background-color: yellow;
+}
 
+.badge {
+  border-radius: 0;
+}
+
+chart.canvas.parentNode.style.height{
+
+}

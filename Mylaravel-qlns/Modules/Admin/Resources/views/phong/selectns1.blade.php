@@ -21,7 +21,7 @@
                 <li class="breadcrumb-item"><a href="{{route('admin.trangchu')}}"><i class="fa fa-home fa-lg"></i></a></li>
                 <li class="breadcrumb-item"><a href="{{route('admin.get.list.phong')}}">Phòng ban</a></li>
                 <li class="breadcrumb-item"><a href="{{route('admin.get.selectns.phong')}}">Danh sách Phòng ban</a></li>
-                <li class="breadcrumb-item"><a>Chi tiết Phòng ban</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.get.selectns.phong')}}">Chi tiết Phòng ban</a></li>
             </ul>
         </div>
         <div class="row">
@@ -40,6 +40,11 @@
                                        role="grid" aria-describedby="sampleTable_info">
                                     <thead>
                                     <tr role="row">
+                                        {{--<th class="sorting_asc" tabindex="" aria-controls="" rowspan=""--}}
+                                        {{--colspan="" aria-sort=""--}}
+                                        {{--aria-label="" style="width: 100px;">--}}
+                                        {{--id--}}
+                                        {{--</th>--}}
                                         <th class="sorting_asc" tabindex="" aria-controls="" rowspan=""
                                             colspan="" aria-sort=""
                                             aria-label="" style="width: 322px;">
