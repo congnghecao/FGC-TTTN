@@ -30,7 +30,6 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::group(['prefix' => 'nhansu'], function () {
-        ;
         //thêm sửa xóa danh sách nhân sự
         Route::get('danh-sach', 'AdminNhansuController@getDanhSach')->name('admin.get.index.nhansu');
         Route::post('danh-sach', 'AdminNhansuController@postDanhSach');
@@ -113,4 +112,11 @@ Route::prefix('admin')->group(function () {
         });
     });
 
+    Route::group(['prefix' => 'thongke'], function () {
+        Route::get('nhan-su/{nam}', 'AdminThongKeController@getNhanSu');
+        Route::post('nhan-su', 'AdminThongKeController@postNhanSu');
+
+        Route::get('chi-tieu/{nam}/{id}', 'AdminThongKeController@getChiTieu');
+        Route::post('chi-tieu', 'AdminThongKeController@postChiTieu');
+    });
 });
