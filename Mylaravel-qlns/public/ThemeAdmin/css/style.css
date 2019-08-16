@@ -10,7 +10,7 @@
   z-index: -1;
   transition: all 1s;
   left: auto;
-  right: 95px;
+  right: 40px;
   top: -20px;
   background-color: #FFF;
   background-clip: padding-box;
@@ -83,6 +83,9 @@ mark {
 }
 .form-control {
   border: 1px solid #ced4da;
+}
+.a {
+  text-decoration: none;
 }
 .chuthich.right {
   margin-left: 10px;

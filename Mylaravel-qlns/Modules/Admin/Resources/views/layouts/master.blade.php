@@ -18,52 +18,21 @@
 </head>
 <body class="app sidebar-mini rtl">
 <!-- Navbar-->
-<header class="app-header"><a class="app-header__logo" href="{{route('admin.trangchu')}}">Thành Hạnh</a>
+<header class="app-header"><a class="app-header__logo" href="{{route('admin.trangchu')}}">{{ Auth::user()->name }}</a>
     <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
                                     aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
-        <li class="app-search">
-            <input class="app-search__input" type="search" placeholder="Search">
-            <button class="app-search__button"><i class="fa fa-search"></i></button>
-        </li>
-        <!--Notification Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i
-                        class="fa fa-bell-o fa-lg"></i></a>
-            <ul class="app-notification dropdown-menu dropdown-menu-right">
-                <li class="app-notification__title">Bạn có tin nhắn mới.</li>
-                <div class="app-notification__content">
-                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span
-                                        class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
-                                            class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                            <div>
-                                <p class="app-notification__message">1 tin nhắn từ mail</p>
-                                <p class="app-notification__meta">2 phút trước</p>
-                            </div>
-                        </a></li>
-
-                    <div class="app-notification__content">
-                        <li><a class="app-notification__item" href="javascript:;"><span
-                                        class="app-notification__icon"><span class="fa-stack fa-lg"><i
-                                                class="fa fa-circle fa-stack-2x text-primary"></i><i
-                                                class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                                <div>
-                                    <p class="app-notification__message">Lisa nhắn 1 mail</p>
-                                    <p class="app-notification__meta">5 phút trước</p>
-                                </div>
-                            </a></li>
-                    </div>
-                </div>
-                <li class="app-notification__footer"><a href="#">Xem tất cả các tin nhắn.</a></li>
-            </ul>
-        </li>
-        <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
-                        class="fa fa-user fa-lg"></i></a>
+        <li class="dropdown">
+            <a class="app-nav__item" style="text-decoration: none" href="#" data-toggle="dropdown"
+               aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i> <span> {{Auth::user()->name }}</span></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> cài đặt</a></li>
-                <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Thông tin</a></li>
-                <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Đăng Xuất</a>
+                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i
+                                class="fa fa-sign-out fa-lg"></i> {{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </li>
@@ -74,27 +43,29 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="ThemeAdmin/img/a.jpg" alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">Thành</p>
-            <p class="app-sidebar__user-designation">155D4802010010</p>
+            <p class="app-sidebar__user-name">{{ Auth::user()->email }}</p>
+            <p class="app-sidebar__user-designation"></p>
         </div>
     </div>
     <ul class="app-menu">
         <li><a class="app-menu__item active" href="{{route('admin.trangchu')}}">
                 <i class="app-menu__icon fa fa-home fa-lg"></i><span
                         class="app-menu__label">Trang chủ</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
-                        class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Phòng Ban</span><i
-                        class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href="{{route('admin.get.list.phong')}}"><i
-                                class="icon fa fa-circle-o"></i>Quản lý Phòng ban</a></li>
+        @if(Auth::user()->name === 'Admin')
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                            class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Phòng Ban</span><i
+                            class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="{{route('admin.get.list.phong')}}"><i
+                                    class="icon fa fa-circle-o"></i>Quản lý Phòng ban</a></li>
 
-                <li><a class="treeview-item" href="{{route('admin.get.selectns.phong')}}"><i
-                                class="icon fa fa-circle-o"></i> Chi tiết Phòng ban</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.nhatkyIndex.phong')}}"><i
-                                class="icon fa fa-circle-o"></i> Nhật ký Phòng ban</a></li>
-            </ul>
-        </li>
+                    <li><a class="treeview-item" href="{{route('admin.get.selectns.phong')}}"><i
+                                    class="icon fa fa-circle-o"></i> Chi tiết Phòng ban</a></li>
+                    <li><a class="treeview-item" href="{{route('admin.get.nhatkyIndex.phong')}}"><i
+                                    class="icon fa fa-circle-o"></i> Nhật ký Phòng ban</a></li>
+                </ul>
+            </li>
+        @endif
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
                 <i class="app-menu__icon icon fa fa-users "></i><span
                         class="app-menu__label">Nhân Sự</span><i
@@ -102,51 +73,54 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="{{route('admin.get.index.nhansu','10')}}"><i
                                 class="icon fa fa-circle-o"></i>Quản lý Nhân sự</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.lichsucongtac.nhansu',['id'=>1,'page'=>10])}}"><i
+                <li><a class="treeview-item"
+                       href="{{route('admin.get.lichsucongtac.nhansu',['id'=>1,'page'=>10])}}"><i
                                 class="icon fa fa-circle-o"></i>Lịch sử công tác</a></li>
                 <li><a class="treeview-item" href="{{route('admin.get.index.xinnghi',['id'=>1,'page'=>10])}}"><i
                                 class="icon fa fa-circle-o"></i>Xin nghỉ</a></li>
             </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
-                <i class="app-menu__icon fa fa-balance-scale" aria-hidden="true"></i>
-                <span class="app-menu__label">Chỉ Tiêu</span><i
-                        class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href="{{route('admin.get.list.chitieu')}}"><i
-                                class="icon fa fa-circle-o"></i>Quản lý Chỉ tiêu</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.danhsachchitieu.chitieu')}}"><i
-                                class="icon fa fa-circle-o"></i>Danh sách Chỉ tiêu</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.IndexNhansu.chitieu')}}"><i
-                                class="icon fa fa-circle-o"></i>Chi tiết chỉ tiêu nhân sự</a></li>
+        @if(Auth::user()->name === 'Admin')
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
+                    <i class="app-menu__icon fa fa-balance-scale" aria-hidden="true"></i>
+                    <span class="app-menu__label">Chỉ Tiêu</span><i
+                            class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="{{route('admin.get.list.chitieu')}}"><i
+                                    class="icon fa fa-circle-o"></i>Quản lý Chỉ tiêu</a></li>
+                    <li><a class="treeview-item" href="{{route('admin.get.danhsachchitieu.chitieu')}}"><i
+                                    class="icon fa fa-circle-o"></i>Danh sách Chỉ tiêu</a></li>
+                    <li><a class="treeview-item" href="{{route('admin.get.IndexNhansu.chitieu')}}"><i
+                                    class="icon fa fa-circle-o"></i>Chi tiết chỉ tiêu nhân sự</a></li>
 
-            </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
-                <i class="app-menu__icon fa fa-hourglass-half" aria-hidden="true"></i>
-                <span class="app-menu__label">Nhật ký nghỉ</span><i
-                        class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href="{{route('admin.get.list.nhatkynghi')}}"><i
-                                class="icon fa fa-circle-o"></i>Liệt kê theo năm</a></li>
-                <li><a class="treeview-item" href="{{route('admin.get.listthang.nhatkynghi')}}"><i
-                                class="icon fa fa-circle-o"></i>Liệt kê theo tháng</a></li>
+                </ul>
+            </li>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
+                    <i class="app-menu__icon fa fa-hourglass-half" aria-hidden="true"></i>
+                    <span class="app-menu__label">Nhật ký nghỉ</span><i
+                            class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="{{route('admin.get.list.nhatkynghi')}}"><i
+                                    class="icon fa fa-circle-o"></i>Liệt kê theo năm</a></li>
+                    <li><a class="treeview-item" href="{{route('admin.get.listthang.nhatkynghi')}}"><i
+                                    class="icon fa fa-circle-o"></i>Liệt kê theo tháng</a></li>
 
-            </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
-                <i class="app-menu__icon fa fa-line-chart" aria-hidden="true"></i>
-                </i><span class="app-menu__label">Thống kê</span><i
-                        class="treeview-indicator fa fa-angle-right"></i></a>
-            <?php $date = getdate()?>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href="admin/thongke/nhan-su/{{$date['year']}}"><i
-                                class="icon fa fa-circle-o"></i>Biến động nhân sự</a></li>
-                <li><a class="treeview-item" href="admin/thongke/chi-tieu/{{$date['year']}}/1"><i
-                                class="icon fa fa-circle-o"></i>Biến động chỉ tiêu</a></li>
+                </ul>
+            </li>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview">
+                    <i class="app-menu__icon fa fa-line-chart" aria-hidden="true"></i>
+                    </i><span class="app-menu__label">Thống kê</span><i
+                            class="treeview-indicator fa fa-angle-right"></i></a>
+                <?php $date = getdate()?>
+                <ul class="treeview-menu">
+                    <li><a class="treeview-item" href="admin/thongke/nhan-su/{{$date['year']}}"><i
+                                    class="icon fa fa-circle-o"></i>Biến động nhân sự</a></li>
+                    <li><a class="treeview-item" href="admin/thongke/chi-tieu/{{$date['year']}}/1"><i
+                                    class="icon fa fa-circle-o"></i>Biến động chỉ tiêu</a></li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
+        @endif
     </ul>
 </aside>
 

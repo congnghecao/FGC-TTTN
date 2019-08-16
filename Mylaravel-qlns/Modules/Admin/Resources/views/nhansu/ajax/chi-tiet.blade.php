@@ -46,6 +46,6 @@
 @endforeach
 @if(sizeof($lamviec) !== 0)
     <a class="dropdown-item text-center small" style="color: #0c5460"
-       href="admin/nhansu/lich-su-cong-tac/{{$nhansu->id}}">
+       href="admin/nhansu/lich-su-cong-tac/{{$nhansu->id}}/10">
         xem lịch sử công tác</a>
 @endif

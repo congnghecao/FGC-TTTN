@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 class AdminNhatkynghiController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
 
@@ -27,6 +40,11 @@ class AdminNhatkynghiController extends Controller
            //var_dump($xinnghi);
           return view('admin::nhatkynghi.nhatkyNghiindex',compact('xinnghi'));
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function postindex(Request $request){
         $hoten = $request->name;
         $xinnghi = DB::table('xinnghi')

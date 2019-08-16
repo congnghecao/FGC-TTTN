@@ -17,8 +17,15 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">CMND</label><span class="erro pl-1">*</span>
-                <input class="form-control" placeholder="VD: 187701990" name="cmnds" value="{{$nhansu->cmnd}}">
+                <input class="form-control" type="number" placeholder="VD: 187701990" name="cmnds" value="{{$nhansu->cmnd}}">
                 <span class="erro erroCmnd"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <span class="erro pl-1">*</span>
+                <input class="form-control"
+                       name="emails" placeholder="...@gmail.com">
+                <span class="erro erroEmail"></span>
             </div>
         </div>
         <div class="col-md-4">

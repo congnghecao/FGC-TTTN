@@ -1,5 +1,6 @@
 $(document).ready(function () {
     //------------------------Thống kê------------------------
+
     //submit form theo năm của nhân sự
     $("select[name='nam1']").change(function () {
         $("form[name='nam1']").submit();
@@ -15,6 +16,7 @@ $(document).ready(function () {
         $("form[name='chitieu']").submit();
     });
     //------------------------Hiển thị số lượng bản ghi------------------------
+
     $("select[name='pageNhanSu']").change(function () {
         window.location = 'admin/nhansu/danh-sach/' + $(this).val();
     });
@@ -27,10 +29,12 @@ $(document).ready(function () {
         window.location = 'admin/xinnghi/index/' + id + '/' + $(this).val();
     });
     //------------------------tìm kiếm------------------------
+
     $("#search").submit(function () {
         return ktrNull("input[name='id']", ".erroSearch", "Mời nhập ID nhân sự.");
     });
     //------------------------xin nghỉ------------------------
+
     //thêm xin nghỉ
     $("#themXN").submit(function () {
         return ktrNull("input[name='id_nhan_su']", ".erroIDn", "Mời nhập mã nhân sự.") === true
@@ -57,6 +61,7 @@ $(document).ready(function () {
     });
     dataModal("#suaModal", ".btn-suaXN", ".close-sua", "suaModal");
     //------------------------Lịch sử công tác------------------------
+
     //Thêm chức vụ
     $("#themChucvu").click(function () {
         ktrChucVu();
@@ -92,10 +97,12 @@ $(document).ready(function () {
         });
     });
     //------------------------nhân sự------------------------
+
     //chi tiet nhan su
     $(".chi-tiet").hover(function () {
         const id = $(this).attr("value");
-        $(".data-chitiet" + id).load('admin/nhansu/chi-tiet/' + id);
+        if ($(".data-chitiet" + id).html().trim() === '')
+            $(".data-chitiet" + id).load('admin/nhansu/chi-tiet/' + id);
     });
     //modal thêm
     dataModal("#themModal", ".btn-them", ".close-them", "themModal");
@@ -106,6 +113,7 @@ $(document).ready(function () {
             && ktrLength("input[name='hoten']", ".erroHoten", "Họ tên phải nhiều hơn 5 ký tự.") === true
             && ktrNull("input[name='ngaysinh']", ".erroNgaysinh", "Mời nhập ngày sinh.") === true
             && ktrNull("input[name='cmnd']", ".erroCmnd", "Mời nhập CMND.") === true
+            && ktrNull("input[name='email']", ".erroEmail", "Mời nhập Email.") === true
             && ktrNull("textarea[name='ntt']", ".erroNtt", "Mời nhập nơi thường trú.") === true
             && ktrNullSelect("select[name='phongban']", ".erroPhongban", "Mời chọn phòng ban.") === true
             && ktrNullSelect("select[name='vitri']", ".erroVitri", "Mời chọn vị trí.") === true
@@ -126,6 +134,7 @@ $(document).ready(function () {
                     && ktrLength("input[name='hotens']", ".erroHoten", "Họ tên phải nhiều hơn 5 ký tự.") === true
                     && ktrNull("input[name='ngaysinhs']", ".erroNgaysinh", "Mời nhập ngày sinh.") === true
                     && ktrNull("input[name='cmnds']", ".erroCmnd", "Mời nhập CMND.") === true
+                    && ktrNull("input[name='emails']", ".erroEmail", "Mời nhập Email.") === true
                     && ktrNull("textarea[name='ntts']", ".erroNtt", "Mời nhập nơi thường trú.") === true
                     && dateLogicStr("input[name='ngayhvs']", "input[name='ngaykthvs']", ".erroNgaykthvs") === true
                     && dateLogicStr("input[name='ngaytvs']", "input[name='ngaykttvs']", ".erroNgaykttvs") === true
@@ -139,6 +148,7 @@ $(document).ready(function () {
 });
 
 // ---------------------function--------------------
+
 //kiểm tra điều kiện submit form
 function ktrForm() {
     /**
@@ -209,6 +219,10 @@ function ktrForm() {
     $("textarea[name='ntt']").change(function () {
         ktrNull(this, ".erroNtt", "Mời nhập nơi thường trú.");
     });
+    //kiểm tra null input Email
+    $("input[name='email']").change(function () {
+        ktrNull(this, ".erroEmail", "Mời nhập Email.");
+    });
     //kiểm tra null input ngày học việc -> false thì cho nhập ngày kết thúc
     $("input[name='ngayhv']").change(function () {
         ktrDate(this, "input[name='ngaykthv']");
@@ -248,6 +262,10 @@ function ktrForm() {
     //Kiểm tra null CMND
     $("input[name='cmnds']").change(function () {
         ktrNull(this, ".erroCmnd", "Mời nhập CMND.");
+    });
+    //kiểm tra null input Email
+    $("input[name='emails']").change(function () {
+        ktrNull(this, ".erroEmail", "Mời nhập Email.");
     });
     //Kiểm tra null nơi thường trú
     $("textarea[name='ntts']").change(function () {

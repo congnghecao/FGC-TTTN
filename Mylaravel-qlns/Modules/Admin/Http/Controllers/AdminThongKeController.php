@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\DB;
 class AdminThongKeController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @param $nam
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -242,6 +252,10 @@ class AdminThongKeController extends Controller
         return view('admin::thongke.chi-tieu', ['id' => $id, 'nam' => $nam, 'chitieu' => $chitieu, 'minNam' => $minNam, 'strDat' => $strDat, 'strKDat' => $strKDat, 'strVDat' => $strVDat, 'sumDat' => $sumDat, 'sumKDat' => $sumKDat, 'sumVDat' => $sumVDat, 'strNam' => $strNam, 'strNamDat' => $strNamDat, 'strNamKDat' => $strNamKDat, 'strNamVDat' => $strNamVDat]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function postChiTieu(Request $request)
     {
         $nam = $request->nam;

@@ -16,6 +16,16 @@ use Carbon\Carbon;
 
 class AdminChitieuController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $chitieu = Chitieu::paginate(7);
@@ -142,7 +152,7 @@ class AdminChitieuController extends Controller
 
         $nhansu = DB::table('nhansu')
             ->select('ho_ten')
-            ->where('id',$id)
+            ->where('id', $id)
             ->get();
 
         $chitietchitieu = DB::table('nhansu')
@@ -150,32 +160,33 @@ class AdminChitieuController extends Controller
             ->leftJoin('chitieu', 'chitieu.id', '=', 'chitietchitieu.id_chi_tieu')
             ->select('chitietchitieu.id', 'nhansu.id as idnhansu', 'chitieu.id as idchitieu', 'thang', 'ten_chi_tieu', 'diem_chi_tieu', 'diem_dat_duoc')
             ->where('nhansu.id', $id)
-
             ->get();
-        return view('admin::chitieu.chitieuNhansu', compact('chitietchitieu', 'thang', 'nam', 'chitieu','id','nhansu'));
+        return view('admin::chitieu.chitieuNhansu', compact('chitietchitieu', 'thang', 'nam', 'chitieu', 'id', 'nhansu'));
     }
 
 
-    public function getAddNhansuChitieu($id, $thang, $nam){
+    public function getAddNhansuChitieu($id, $thang, $nam)
+    {
 
         $chitieu = Chitieu::all();
         $nhansu = DB::table('nhansu')
             ->select('ho_ten')
-            ->where('id',$id)
+            ->where('id', $id)
             ->get();
-        return view('admin::chitieu.chitieuNhansuAdd',compact('chitieu','id','thang','nam','nhansu'));
+        return view('admin::chitieu.chitieuNhansuAdd', compact('chitieu', 'id', 'thang', 'nam', 'nhansu'));
     }
 
 
-    public function postAddNhansuChitieu(Request $request){
-        if(count($request->product_name) > 0 ){
-            foreach ($request->product_name as $item=>$v){
+    public function postAddNhansuChitieu(Request $request)
+    {
+        if (count($request->product_name) > 0) {
+            foreach ($request->product_name as $item => $v) {
                 $data = array(
-                    'id_chi_tieu'=>$request->product_name[$item],
-                    'id_nhan_su'=>$request->idns[$item],
-                    'diem_chi_tieu'=>$request->quantity[$item],
-                    'thang'=>$request->thang[$item],
-                    'nam'=>$request->nam[$item]
+                    'id_chi_tieu' => $request->product_name[$item],
+                    'id_nhan_su' => $request->idns[$item],
+                    'diem_chi_tieu' => $request->quantity[$item],
+                    'thang' => $request->thang[$item],
+                    'nam' => $request->nam[$item]
                 );
                 Chitietchitieu::insert($data);
             }

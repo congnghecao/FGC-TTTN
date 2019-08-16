@@ -7,21 +7,40 @@ use App\Models\Nhansu;
 use App\Models\Phongban;
 use App\Models\Vitri;
 use App\Models\Xinnghi;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminNhansuController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getDanhSach($page)
     {
-        $nhansu = DB::table('nhansu')
-            ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
-            ->paginate($page);
+        if (Auth::user()->name === 'Admin') {
+            $nhansu = DB::table('nhansu')
+                ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
+                ->paginate($page);
+        } else {
+            $nhansu = DB::table('nhansu')
+                ->select(DB::raw('nhansu.id,nhansu.ho_ten,nhansu.ngay_sinh,nhansu.noi_thuong_tru,nhansu.cmnd,nhansu.ngay_vao,DATEDIFF(nhansu.ngay_lam_ket_thuc,nhansu.ngay_vao) as ngayct,DATEDIFF(now(),nhansu.ngay_vao) as ngayht,nhansu.ngay_hoc_viec,nhansu.ngay_kt_hoc_viec,nhansu.ngay_thu_viec,nhansu.ngay_kt_thu_viec,nhansu.ngay_lam_chinh_thuc,nhansu.ngay_lam_ket_thuc'))
+                ->where('nhansu.id', Auth::user()->id)
+                ->paginate($page);
+        }
         $lamviec = DB::table('nhansu')
             ->select(DB::raw('nhansu.id,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc'))
             ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
@@ -110,6 +129,12 @@ class AdminNhansuController extends Controller
             $lamviec->save();
         }
 
+        $user = new User();
+        $user->name = $request->hoten;
+        $user->email = $request->email;
+        $user->password = bcrypt("123456");
+
+        $user->save();
         return redirect('admin/nhansu/danh-sach/10')->with('thongbao', 'Đã thêm mới thành công');
     }
 
@@ -120,7 +145,8 @@ class AdminNhansuController extends Controller
     public function getSua($id)
     {
         $nhansu = Nhansu::find($id);
-        return view('admin::nhansu.ajax.sua-nhan-su', ['nhansu' => $nhansu]);
+        $user = User::find($id);
+        return view('admin::nhansu.ajax.sua-nhan-su', ['nhansu' => $nhansu, 'user' => $user]);
     }
 
     /**
@@ -130,6 +156,7 @@ class AdminNhansuController extends Controller
      */
     public function postSua(Request $request, $id)
     {
+        //Chỉnh sửa thông tin cá nhân
         $nhansu = nhansu::find($id);
 
         $nhansu->ho_ten = $request->hotens;
@@ -144,6 +171,10 @@ class AdminNhansuController extends Controller
         $nhansu->ngay_lam_ket_thuc = $request->ngaylkts;
 
         $nhansu->save();
+        //Chỉnh sửa email đăng nhập
+        $user = User::find($id);
+        $user->email = $request->emails;
+        $user->save();
         return redirect('admin/nhansu/danh-sach/10')->with('thongbao', 'Đã sửa thành công');
     }
 
@@ -165,13 +196,24 @@ class AdminNhansuController extends Controller
     public function getLichSu($id, $page)
     {
         $stt = 1;
-        $nhansu = DB::table('nhansu')
-            ->select(DB::raw('lamviec.id,nhansu.ho_ten,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc,DATEDIFF(lamviec.ngay_ket_thuc,lamviec.ngay_lam) as ngayct,DATEDIFF(now(),lamviec.ngay_lam) as ngayht'))
-            ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
-            ->join('phongban', 'lamviec.id_phong_ban', '=', 'phongban.id')
-            ->join('vitri', 'lamviec.id_vi_tri', '=', 'vitri.id')
-            ->where('nhansu.id', '=', $id)
-            ->paginate($page);
+        if (Auth::user()->name === 'Admin') {
+            $nhansu = DB::table('nhansu')
+                ->select(DB::raw('lamviec.id,nhansu.ho_ten,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc,DATEDIFF(lamviec.ngay_ket_thuc,lamviec.ngay_lam) as ngayct,DATEDIFF(now(),lamviec.ngay_lam) as ngayht'))
+                ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
+                ->join('phongban', 'lamviec.id_phong_ban', '=', 'phongban.id')
+                ->join('vitri', 'lamviec.id_vi_tri', '=', 'vitri.id')
+                ->where('nhansu.id', '=', $id)
+                ->paginate($page);
+        } else {
+            $id = Auth::user()->id;
+            $nhansu = DB::table('nhansu')
+                ->select(DB::raw('lamviec.id,nhansu.ho_ten,vitri.ten_vi_tri,phongban.ten_phong,lamviec.ngay_lam,lamviec.ngay_ket_thuc,DATEDIFF(lamviec.ngay_ket_thuc,lamviec.ngay_lam) as ngayct,DATEDIFF(now(),lamviec.ngay_lam) as ngayht'))
+                ->join('lamviec', 'nhansu.id', '=', 'lamviec.id_nhan_su')
+                ->join('phongban', 'lamviec.id_phong_ban', '=', 'phongban.id')
+                ->join('vitri', 'lamviec.id_vi_tri', '=', 'vitri.id')
+                ->where('nhansu.id', '=', $id)
+                ->paginate($page);
+        }
         $phongban = phongban::all();
         $vitri = vitri::all();
         return view('admin::nhansu.lich-su-cong-tac', ['page' => $page, 'nhansu' => $nhansu, 'phongban' => $phongban, 'vitri' => $vitri, 'id' => $id, 'stt' => $stt]);
@@ -183,7 +225,11 @@ class AdminNhansuController extends Controller
      */
     public function postLichSu(Request $request, $page)
     {
-        $id = $request->id;
+        if (Auth::user()->name === 'Admin') {
+            $id = $request->id;
+        } else {
+            $id = Auth::user()->id;
+        }
         return redirect('admin/nhansu/lich-su-cong-tac/' . $id . '/' . $page);
     }
 
@@ -269,13 +315,22 @@ class AdminNhansuController extends Controller
     public function getXinNghi($id, $page)
     {
         $stt = 1;
-        $nhansu = DB::table('nhansu')
-            ->select(DB::raw('xinnghi.id,xinnghi.id_nhan_su,nhansu.ho_ten,xinnghi.so_buoi_nghi,xinnghi.ngay_bat_dau,xinnghi.ngay_ket_thuc,xinnghi.ly_do,xinnghi.chuyen_toi_ai,xinnghi.loai_nghi,xinnghi.phe_duyet'))
-            ->join('xinnghi', 'xinnghi.id_nhan_su', 'nhansu.id')
-            ->where('nhansu.id', '=', $id)
-            ->orderByDesc('xinnghi.id')
-            ->paginate($page);
-
+        if (Auth::user()->name === 'Admin') {
+            $nhansu = DB::table('nhansu')
+                ->select(DB::raw('xinnghi.id,xinnghi.id_nhan_su,nhansu.ho_ten,xinnghi.so_buoi_nghi,xinnghi.ngay_bat_dau,xinnghi.ngay_ket_thuc,xinnghi.ly_do,xinnghi.chuyen_toi_ai,xinnghi.loai_nghi,xinnghi.phe_duyet'))
+                ->join('xinnghi', 'xinnghi.id_nhan_su', 'nhansu.id')
+                ->where('nhansu.id', '=', $id)
+                ->orderByDesc('xinnghi.id')
+                ->paginate($page);
+        } else {
+            $id = Auth::user()->id;
+            $nhansu = DB::table('nhansu')
+                ->select(DB::raw('xinnghi.id,xinnghi.id_nhan_su,nhansu.ho_ten,xinnghi.so_buoi_nghi,xinnghi.ngay_bat_dau,xinnghi.ngay_ket_thuc,xinnghi.ly_do,xinnghi.chuyen_toi_ai,xinnghi.loai_nghi,xinnghi.phe_duyet'))
+                ->join('xinnghi', 'xinnghi.id_nhan_su', 'nhansu.id')
+                ->where('nhansu.id', '=', $id)
+                ->orderByDesc('xinnghi.id')
+                ->paginate($page);
+        }
         $vitri = DB::table('vitri')
             ->select('ten_vi_tri')
             ->where('ten_vi_tri', '!=', 'Nhân viên')
@@ -359,7 +414,10 @@ class AdminNhansuController extends Controller
         $xinnghi->ly_do = $request->ldns;
         $xinnghi->chuyen_toi_ai = $request->vitris;
         $xinnghi->loai_nghi = $request->loainghis;
-        $xinnghi->phe_duyet = $request->tts;
+        if (Auth::user()->name === 'Admin')
+            $xinnghi->phe_duyet = $request->tts;
+        else
+            $xinnghi->phe_duyet = 0;
 
         $xinnghi->save();
         return redirect('admin/xinnghi/index/' . $request->id_nhan_sus . '/10')->with('thongbao', 'Đã sửa thành công!');
@@ -369,12 +427,12 @@ class AdminNhansuController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function getXoaXN($id, $nhansu)
+    public function getXoaXN($id)
     {
         $xinnghi = Xinnghi::find($id);
 
         $xinnghi->delete();
-        return redirect('admin/xinnghi/index/' . $nhansu)->with('thongbao', 'Đã xóa thành công!');
+        return redirect()->back()->with('thongbao', 'Đã xóa thành công');
     }
 
 }

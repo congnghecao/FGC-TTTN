@@ -4,7 +4,7 @@
         <div class="form-group col-md-6">
             <label class="control-label">Mã nhân sự</label>
             <span class="erro pl-1">*</span>
-            <input class="form-control" type="text" placeholder="vd: 1" value="{{$xinnghi->id_nhan_su}}"
+            <input disabled class="form-control" type="text" placeholder="vd: 1" value="{{$xinnghi->id_nhan_su}}"
                    name="id_nhan_sus">
             <span class="erro erroIDns"></span>
         </div>
@@ -55,17 +55,21 @@
                 <option value="Nghỉ việc">Nghỉ việc</option>
             </select>
         </div>
-
-        <div class="form-group col-md-4">
-            <label class="control-label" for="tts">Phê duyệt</label>
-            <span class="erro pl-1">*</span>
-            <select class="form-control" id="tts" name="tts">
-                <option value="1">Đã phê duyệt</option>
-                <option value="0">Chưa phê duyệt</option>
-            </select>
+        @if(Auth::user()->name === 'Admin')
+            <div class="form-group col-md-4">
+                <label class="control-label" for="tts">Phê duyệt</label>
+                <span class="erro pl-1">*</span>
+                <select class="form-control" id="tts" name="tts">
+                    <option value="1">Đã phê duyệt</option>
+                    <option value="0">Chưa phê duyệt</option>
+                </select>
+            </div>
+        @endif
+        <hr color="#e9ecef" class="m-0" width="100%">
+        <div class="col-md-6">
+            <span class="erro">Chú ý: Trường * không được để trống !</span>
         </div>
-
-        <div class="text-center col-md-12">
+        <div class=" text-right col-md-6">
             <button class="btn btn-primary mt-1" id="btn-sua">
                 <i class="fa fa-fw fa-lg fa-check-circle"></i>Cập nhật
             </button>

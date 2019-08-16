@@ -64,7 +64,7 @@ Route::prefix('admin')->group(function () {
         Route::get('sua/{id}', 'AdminNhansuController@getSuaXN');
         Route::post('sua/{id}', 'AdminNhansuController@postSuaXN');
 
-        Route::get('xoa/{id}/{nhansu}', 'AdminNhansuController@getXoaXN');
+        Route::get('xoa/{id}', 'AdminNhansuController@getXoaXN');
     });
 
     Route::group(['prefix' => 'chitieu'], function () {
